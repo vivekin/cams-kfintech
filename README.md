@@ -73,3 +73,15 @@ Open [CMD] and navigate to cams_python folder and run:
 
 Log file will be generated like below:
 cams_firefox_yyyy_mm_ddThh_mm_ss.log
+
+## For Edge browser
+
+Download edge driver from:
+https://developer.microsoft.com/en-in/microsoft-edge/tools/webdriver
+
+Extract "edgedriver_win64.zip"
+
+In config.ini file, add this line under [DEFAULT]
+msedgedriver=<path to msedgedriver.exe>
+
+pip install selenium --upgrade
