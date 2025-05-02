@@ -45,12 +45,13 @@ logging.basicConfig(
 )
 
 start_time = time.perf_counter()
-logging.info(f"START - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - v.1")
+logging.info(f"START - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - v.2")
 
 today = date.today()
 logging.info(f"Today's date: {formatted_datetime}")
 logging.info(f"[config.ini] start_date: {config['cams']['start_date']}")
 logging.info(f"[config.ini] end_date: {config['cams']['end_date']}")
+logging.info(f"[config.ini] month_yr: {config['cams']['month_yr']}")
 status={}
 
 # Fetching cams user list
@@ -160,11 +161,8 @@ for user in userlist:
             browser.execute_script("arguments[0].click();", checkbox7)
             time.sleep(0.5)
 
-            datedrp=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[27]/div/mat-form-field/div/div[1]/div[3]/mat-select/div/div[2]")
-            browser.execute_script("arguments[0].click();", datedrp)
-            time.sleep(0.5)
-            dateop=browser.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div/mat-option[2]/span")
-            browser.execute_script("arguments[0].click();", dateop)
+            month_sel=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[27]/div/mat-form-field/div/div[1]/div[3]/mat-select")
+            month_sel.send_keys(config['cams']['month_yr'])
             time.sleep(0.5)
 
             # st_date = browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[29]/div/div[1]/div[1]/mat-form-field/div/div[1]/div[3]/input")
