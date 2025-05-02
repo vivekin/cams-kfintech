@@ -30,12 +30,14 @@ logging.basicConfig(
 )
 
 start_time = time.perf_counter()
-logging.info(f"START - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - v.1")
+logging.info(f"START - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - v.2")
 
 today = date.today()
 logging.info(f"Today's date: {formatted_datetime}")
 logging.info(f"[config.ini] start_date: {config['kfintech']['start_date']}")
 logging.info(f"[config.ini] end_date: {config['kfintech']['end_date']}")
+logging.info(f"[config.ini] start_month: {config['kfintech']['start_month']}")
+logging.info(f"[config.ini] end_month: {config['kfintech']['end_month']}")
 status={}
 
 # Fetching kfintech user list
@@ -107,11 +109,11 @@ for user in userlist:
 
         all_fund = browser.find_element(By.XPATH,"/html/body/form/div[6]/div/table[1]/tbody/tr[2]/td/table[1]/tbody/tr[6]/td/table/tbody/tr[1]/td[2]/div/table/tbody/tr[1]/td/input",)
         all_fund.click()
-        time.sleep(1)
+        time.sleep(5)
 
         schemes = browser.find_element(By.XPATH,"/html/body/form/div[6]/div/table[1]/tbody/tr[2]/td/table[1]/tbody/tr[6]/td/table/tbody/tr[2]/td[2]/div/table/tbody/tr/td/input",)
         schemes.click()
-        time.sleep(1)
+        time.sleep(5)
 
         brokerage_type = browser.find_element(By.XPATH,"/html/body/form/div[6]/div/table[1]/tbody/tr[2]/td/table[1]/tbody/tr[8]/td[2]/div/table/tbody/tr[1]/td/input",)
         brokerage_type.click()
