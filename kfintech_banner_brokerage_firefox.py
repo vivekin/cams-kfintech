@@ -30,7 +30,7 @@ logging.basicConfig(
 )
 
 start_time = time.perf_counter()
-logging.info(f"START - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - v.2")
+logging.info(f"START - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - v.3")
 
 today = date.today()
 logging.info(f"Today's date: {formatted_datetime}")
@@ -118,22 +118,12 @@ for user in userlist:
         brokerage_type = browser.find_element(By.XPATH,"/html/body/form/div[6]/div/table[1]/tbody/tr[2]/td/table[1]/tbody/tr[8]/td[2]/div/table/tbody/tr[1]/td/input",)
         brokerage_type.click()
         time.sleep(1)
-
-        email = browser.find_element(By.XPATH,"/html/body/form/div[6]/div/table[1]/tbody/tr[2]/td/table[1]/tbody/tr[10]/td[2]/div/input[1]",)
-        email.click()
         try:
-            time.sleep(0.5)
-            email2 = browser.find_element(By.XPATH,"/html/body/form/div[6]/div/table[1]/tbody/tr[2]/td/table[1]/tbody/tr[10]/td[2]/div/input[2]",)
-            email2.click()
-            time.sleep(0.5)
-            email3 = browser.find_element(By.XPATH,"/html/body/form/div[6]/div/table[1]/tbody/tr[2]/td/table[1]/tbody/tr[10]/td[2]/div/input[3]",)
-            email3.click()
-            time.sleep(0.5)
-            email4 = browser.find_element(By.XPATH,"/html/body/form/div[6]/div/table[1]/tbody/tr[2]/td/table[1]/tbody/tr[10]/td[2]/div/input[4]",)
-            email4.click()
-            time.sleep(0.5)
-            email5 = browser.find_element(By.XPATH,"/html/body/form/div[6]/div/table[1]/tbody/tr[2]/td/table[1]/tbody/tr[10]/td[2]/div/input[5]",)
-            email5.click()
+            checkboxes = browser.find_elements(By.CSS_SELECTOR, "#ctl00_MiddleContent_divChkEmails input[type='checkbox']")
+            for checkbox in checkboxes:
+                time.sleep(0.5)
+                if not checkbox.is_selected():
+                    checkbox.click()
         except Exception as e:
             pass
         time.sleep(1)
