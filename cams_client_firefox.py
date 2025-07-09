@@ -45,7 +45,7 @@ logging.basicConfig(
 )
 
 start_time = time.perf_counter()
-logging.info(f"START - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - v.4")
+logging.info(f"START - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - v.5")
 
 today = date.today()
 logging.info(f"Today's date: {formatted_datetime}")
@@ -135,7 +135,7 @@ for user in userlist:
             delivery=browser.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div/mat-option[2]/span")
             browser.execute_script("arguments[0].click();", delivery)
             time.sleep(1)
-            st_date = browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[29]/div/div[1]/div[1]/mat-form-field/div/div[1]/div[3]/input")
+            st_date = browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[30]/div/div[1]/div[1]/mat-form-field/div/div[1]/div[3]/input")
             browser.execute_script("arguments[0].removeAttribute('readonly')", st_date)
             st_date.send_keys(Keys.CONTROL + 'a', Keys.BACKSPACE)
             st_date.send_keys('01-Jan-1995')
@@ -145,7 +145,7 @@ for user in userlist:
             # en_date.send_keys(Keys.CONTROL + 'a', Keys.BACKSPACE)
             # en_date.send_keys(config['cams']['end_date'])
             # time.sleep(1)
-            next=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[32]/div/input")
+            next=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[33]/div/input")
             browser.execute_script("arguments[0].click();", next)
             time.sleep(2)
             pswd=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[3]/div/div/form/div/div/div[8]/div[1]/mat-form-field/div/div[1]/div[3]/input")
