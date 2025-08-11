@@ -85,3 +85,47 @@ In config.ini file, add this line under [DEFAULT]
 msedgedriver=<path to msedgedriver.exe>
 
 pip install selenium --upgrade
+
+===========================================
+
+## CAMS Scripts
+##### WBR2. Investor Transactions for a Period
+cams_WBR2_edge.py
+cams_WBR2_firefox.py
+##### WBR9. Investor Static details feed - CRMS Format
+cams_WBR9_edge.py
+cams_WBR9_firefox.py
+##### WBR49. SIP/STP procured for the period
+cams_WBR49_edge.py
+cams_WBR49_firefox.py
+##### WBR77. Consolidated Brokerage Payout Details
+cams_WBR77_edge.py
+cams_WBR77_firefox.py
+
+## Kfintech Old Scripts
+##### MFSD201 - Transaction Report
+kfintech_old_MFSD201_edge.py
+kfintech_old_MFSD201_firefox.py
+##### MFSD205 - Brokerage Report
+kfintech_old_MFSD205_edge.py
+kfintech_old_MFSD205_firefox.py
+##### MFSD230 - SIP/STP Report
+kfintech_old_MFSD230_edge.py
+kfintech_old_MFSD230_firefox.py
+##### MFSD262 - PAN Level KYC Report
+kfintech_old_MFSD262_edge.py
+kfintech_old_MFSD262_firefox.py
+
+## Kfintech New Scripts
+##### MFSD201 - Transaction Report
+kfintech_new_MFSD201_edge.py
+kfintech_new_MFSD201_firefox.py
+##### MFSD205 - Brokerage Report
+kfintech_new_MFSD205_edge.py
+kfintech_new_MFSD205_firefox.py
+##### MFSD230 - SIP/STP Report
+kfintech_new_MFSD230_edge.py
+kfintech_new_MFSD230_firefox.py
+##### MFSD262 - PAN Level KYC Report
+kfintech_new_MFSD262_edge.py
+kfintech_new_MFSD262_firefox.py
