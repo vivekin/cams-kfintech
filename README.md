@@ -10,7 +10,7 @@ Verify Python [CMD]:
 
 Install packages  [CMD]
 
-    pip install selenium python-dateutil
+    pip install selenium python-dateutil requests Pillow
 
 
 Create folder "kfintech_python" in Documents

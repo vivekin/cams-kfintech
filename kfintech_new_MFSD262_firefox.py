@@ -2,6 +2,10 @@ import csv
 import time
 import logging
 import re
+import requests
+import base64
+from PIL import Image
+import io
 import configparser
 from datetime import date, datetime
 from dateutil.relativedelta import relativedelta
@@ -9,6 +13,23 @@ from dateutil.relativedelta import relativedelta
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+def solve_captcha(image_path):
+    API_KEY = "K83400982888957"
+    url = "https://api.ocr.space/parse/image"
+    with open(image_path, "rb") as f:
+        payload = {
+            "apikey": API_KEY,
+            "language": "eng",
+            "OCREngine": 2  # Better accuracy engine
+        }
+        response = requests.post(url, files={"file": f}, data=payload)
+    result = response.json()
+    if result["IsErroredOnProcessing"]:
+        return None
+    return result["ParsedResults"][0]["ParsedText"].strip().replace(" ", "")
 
 print("Script running ...")
 
@@ -57,16 +78,55 @@ for user in userlist:
         logging.info(f"Processing user {user[0]} ...")
         browser.get("https://dss.kfintech.com/dssweb/")
 
+        time.sleep(1)
         page = browser.find_element(By.XPATH, "/html/body/div/div[2]/div[1]/div[2]/div/h5")
         logging.info(f"Current page: {page.text}")
-        userlogin_name = browser.find_element(By.XPATH,"/html/body/div/div[2]/div[1]/div[2]/div/form/div/div/div[1]/div/input",)
-        userlogin_name.send_keys(user[0])
-        userlogin_pass = browser.find_element(By.XPATH,"/html/body/div/div[2]/div[1]/div[2]/div/form/div/div/div[2]/div/input",)
-        userlogin_pass.send_keys(user[1])
-        time.sleep(2)
-        signin = browser.find_element(By.XPATH, "/html/body/div/div[2]/div[1]/div[2]/div/form/div/button")
-        signin.click()
+        loggedin=False
+
+        while(loggedin==False):
+            time.sleep(0.5)
+            userlogin_name = browser.find_element(By.XPATH,"/html/body/div/div[2]/div[1]/div[2]/div/form/div/div/div[1]/div/input",)
+            userlogin_name.send_keys(Keys.CONTROL + 'a', Keys.BACKSPACE)
+            userlogin_name.send_keys(user[0])
+            userlogin_pass = browser.find_element(By.XPATH,"/html/body/div/div[2]/div[1]/div[2]/div/form/div/div/div[2]/div/input",)
+            userlogin_pass.send_keys(Keys.CONTROL + 'a', Keys.BACKSPACE)
+            userlogin_pass.send_keys(user[1])
+            time.sleep(1)
+            captcha_img = browser.find_element(By.XPATH, "/html/body/div/div[2]/div[1]/div[2]/div/form/div/div/div[3]/div[2]/div/div/canvas")
+            # Get the canvas image as a Base64 string via JavaScript
+            canvas_base64 = browser.execute_script("""
+                var canvas = arguments[0];
+                return canvas.toDataURL('image/png').substring(22);
+            """, captcha_img)
+            
+            # Convert Base64 to image
+            canvas_png = base64.b64decode(canvas_base64)
+            image = Image.open(io.BytesIO(canvas_png))
+            image.save("temp_captcha.png")
+            captcha_text = solve_captcha("temp_captcha.png")
+            time.sleep(1)
+            captcha_input = browser.find_element(By.XPATH,"/html/body/div/div[2]/div[1]/div[2]/div/form/div/div/div[3]/div[1]/div/input",)
+            # captcha_input.send_keys(Keys.CONTROL + 'a', Keys.BACKSPACE)
+            captcha_input.send_keys(captcha_text)
+            time.sleep(0.5)
+            signin = browser.find_element(By.XPATH, "/html/body/div/div[2]/div[1]/div[2]/div/form/div/button")
+            signin.click()
+            time.sleep(1)
+            try:
+                # Wait briefly for captcha error toast
+                toast = WebDriverWait(browser, 3).until(
+                    EC.presence_of_element_located((By.XPATH, "/html/body/div/div[2]/div[2]/div"))
+                )
+                logging.info("Wrong captcha, retrying...")
+                loggedin=False
+            except Exception:
+                logging.info("No error toast, login likely succeeded!")
+                loggedin=True
+   
         time.sleep(7)
+        # popup = browser.find_element(By.XPATH, "/html/body/div[2]/div[3]/div/h2/button")
+        # popup.click()
+        # time.sleep(2)
         webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
         time.sleep(2)
         page = browser.find_element(By.XPATH, "/html/body/div/div/div/div/div/ul/a[1]")
@@ -91,7 +151,7 @@ for user in userlist:
         funds_drpdwn = browser.find_element(By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div/div/div[1]/div[2]/div/div/div",)
         funds_drpdwn.click()
         time.sleep(1)
-        funds = browser.find_element(By.XPATH,"/html/body/div[2]/div[3]/ul/li[1]",)
+        funds = browser.find_element(By.XPATH,"/html/body/div[2]/div[3]/ul/li/span[1]",)
         funds.click()
         time.sleep(1)
         webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
