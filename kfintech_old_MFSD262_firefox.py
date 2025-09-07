@@ -55,7 +55,7 @@ for user in userlist:
     print(f"Processing {userlist.index(user)+1} of {user_count} users ...")
     try:
         logging.info(f"Processing user {user[0]} ...")
-        browser.get("https://mfs.kfintech.com/mfs/distributor/distributor_Login.aspx")
+        browser.get("https://mfs.kfintech.com/mfs/distributor/distributor_Loginold.aspx")
 
         page = browser.find_element(By.XPATH, "/html/body/div[3]/div/div[3]/div[2]/div[1]/form/div[3]")
         logging.info(f"Current page: {page.text}")
@@ -147,3 +147,4 @@ for i in status.keys():
     logging.info(f"{i}: {status[i]}")
 logging.info("#####################################")
 print("Script exiting ...")
+
