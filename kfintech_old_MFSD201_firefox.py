@@ -56,6 +56,7 @@ for user in userlist:
     try:
         logging.info(f"Processing user {user[0]} ...")
         browser.get("https://mfs.kfintech.com/mfs/distributor/distributor_Loginold.aspx")
+        time.sleep(2)
         browser.execute_script("""
                                  var chatbot = document.querySelector('div[data-id="zsalesiq"]');
                                  if (chatbot) chatbot.remove();
@@ -179,3 +180,4 @@ for i in status.keys():
     logging.info(f"{i}: {status[i]}")
 logging.info("#####################################")
 print("Script exiting ...")
+
