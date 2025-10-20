@@ -172,6 +172,9 @@ for user in userlist:
             logging.error(f"email error: {e}")
 
         time.sleep(1)
+        excel_fmt = browser.find_element(By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div/div/div[1]/div[3]/div/fieldset/div/div/div[1]/label/span[1]/input",)
+        excel_fmt.click()
+        time.sleep(1)
         extraction_pass = browser.find_element(By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div/div/div[2]/div/div[2]/div/div[1]/div/div/div/input",)
         extraction_pass.send_keys(user[2])
         time.sleep(1)
@@ -216,3 +219,4 @@ for i in status.keys():
     logging.info(f"{i}: {status[i]}")
 logging.info("#####################################")
 print("Script exiting ...")
+
