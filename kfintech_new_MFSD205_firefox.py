@@ -196,7 +196,7 @@ for user in userlist:
         funds.click()
         time.sleep(1)
         webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
-        time.sleep(5)
+        time.sleep(7)
 
         schemes_drpdwn = browser.find_element(By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div[2]/div[1]/div[1]/div[2]/div/div",)
         schemes_drpdwn.click()
@@ -205,7 +205,7 @@ for user in userlist:
         schemes.click()
         time.sleep(1)
         webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
-        time.sleep(5)
+        time.sleep(7)
 
         brokerage_drpdwn = browser.find_element(By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div[2]/div[1]/div[1]/div[3]/div/div",)
         brokerage_drpdwn.click()
@@ -214,7 +214,7 @@ for user in userlist:
         brokerage_type.click()
         time.sleep(1)
         webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
-        time.sleep(5)
+        time.sleep(10)
 
         brokerage_sub_drpdwn = browser.find_element(By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div[2]/div[1]/div[1]/div[4]/div/div",)
         brokerage_sub_drpdwn.click()
@@ -223,7 +223,7 @@ for user in userlist:
         brokerage_subtype.click()
         time.sleep(1)
         webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
-        time.sleep(2)
+        time.sleep(3)
         
         submit = browser.find_element(By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div[3]/button[1]",)
         submit.click()
@@ -263,3 +263,4 @@ for i in status.keys():
     logging.info(f"{i}: {status[i]}")
 logging.info("#####################################")
 print("Script exiting ...")
+
