@@ -73,6 +73,7 @@ with open("kfintech_users.csv", newline="") as csvfile:
 # service = Service(executable_path=fr"{config['DEFAULT']['msedgedriver']}")
 # Creating an instance webdriver
 browser = webdriver.Firefox()
+wait = WebDriverWait(browser, 10)
 # browser = webdriver.Edge(service=service)
 
 user_count = len(userlist)
@@ -189,6 +190,14 @@ for user in userlist:
         extraction_pass_confirm.send_keys(user[2])
         time.sleep(1)
 
+        def wait_overlay():
+            try:
+                wait.until(EC.invisibility_of_element_located((By.CSS_SELECTOR, "ul.MuiMenu-list")))
+                wait.until(EC.invisibility_of_element_located((By.CSS_SELECTOR, "div.MuiBox-root.css-rg1czi")))
+                time.sleep(1)
+            except Exception as e:
+                logging.error(f"wait_overlay error: {e}")
+
         funds_drpdwn = browser.find_element(By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div[2]/div[1]/div[1]/div[1]/div/div",)
         funds_drpdwn.click()
         time.sleep(1)
@@ -196,36 +205,40 @@ for user in userlist:
         funds.click()
         time.sleep(1)
         webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
+        wait_overlay()
         time.sleep(7)
 
-        schemes_drpdwn = browser.find_element(By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div[2]/div[1]/div[1]/div[2]/div/div",)
+        schemes_drpdwn = wait.until(EC.element_to_be_clickable((By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div[2]/div[1]/div[1]/div[2]/div/div")))
         schemes_drpdwn.click()
         time.sleep(1)
         schemes = browser.find_element(By.XPATH,"/html/body/div[2]/div[3]/ul/li/span[1]",)
         schemes.click()
         time.sleep(1)
         webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
-        time.sleep(7)
+        wait_overlay()
+        time.sleep(1)
 
-        brokerage_drpdwn = browser.find_element(By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div[2]/div[1]/div[1]/div[3]/div/div",)
+        brokerage_drpdwn = wait.until(EC.element_to_be_clickable((By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div[2]/div[1]/div[1]/div[3]/div/div")))
         brokerage_drpdwn.click()
         time.sleep(1)
         brokerage_type = browser.find_element(By.XPATH,"/html/body/div[2]/div[3]/ul/li/span[1]",)
         brokerage_type.click()
         time.sleep(1)
         webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
-        time.sleep(10)
+        wait_overlay()
+        time.sleep(7)
 
-        brokerage_sub_drpdwn = browser.find_element(By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div[2]/div[1]/div[1]/div[4]/div/div",)
+        brokerage_sub_drpdwn = wait.until(EC.element_to_be_clickable((By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div[2]/div[1]/div[1]/div[4]/div/div")))
         brokerage_sub_drpdwn.click()
         time.sleep(1)
         brokerage_subtype = browser.find_element(By.XPATH,"/html/body/div[2]/div[3]/ul/li/span[1]",)
         brokerage_subtype.click()
         time.sleep(1)
         webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
-        time.sleep(3)
+        wait_overlay()
+        time.sleep(1)
         
-        submit = browser.find_element(By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div[3]/button[1]",)
+        submit = wait.until(EC.element_to_be_clickable((By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div[3]/button[1]")))
         submit.click()
         logging.info("Mailback request submitted")
         time.sleep(4)
@@ -263,4 +276,3 @@ for i in status.keys():
     logging.info(f"{i}: {status[i]}")
 logging.info("#####################################")
 print("Script exiting ...")
-
