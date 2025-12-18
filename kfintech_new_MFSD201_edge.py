@@ -71,6 +71,7 @@ with open("kfintech_users.csv", newline="") as csvfile:
 service = Service(executable_path=fr"{config['DEFAULT']['msedgedriver']}")
 # Creating an instance webdriver
 browser = webdriver.Edge(service=service)
+wait = WebDriverWait(browser, 10)
 
 user_count = len(userlist)
 # Process each user
@@ -137,10 +138,10 @@ for user in userlist:
         mailback = browser.find_element(By.XPATH, "/html/body/div/div/div/div/div/ul/a[3]")
         mailback.click()
         time.sleep(2)
-        page = browser.find_element(By.XPATH,"/html/body/div/div/div/div/div/ul/a[3]",)
+        page = wait.until(EC.element_to_be_clickable((By.XPATH,"/html/body/div/div/div/div/div/ul/a[3]")))
         logging.info(f"Current page: {page.text}")
         # MFSD201 - Transaction Report
-        procurement_tab = browser.find_element(By.XPATH,"/html/body/div/div[2]/main/div/div[2]/div/div[3]/div[1]/div/div[1]",)
+        procurement_tab = wait.until(EC.element_to_be_clickable((By.XPATH,"/html/body/div/div[2]/main/div/div[2]/div/div[3]/div[1]/div/div[1]")))
         procurement_tab.click()
         transaction_report = browser.find_element(By.XPATH,"/html/body/div/div[2]/main/div/div[2]/div/div[3]/div[2]/div/ul/a[7]/li/div",)
         transaction_report.click()
@@ -234,4 +235,5 @@ for i in status.keys():
     logging.info(f"{i}: {status[i]}")
 logging.info("#####################################")
 print("Script exiting ...")
+
 
