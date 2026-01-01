@@ -10,11 +10,11 @@ Verify Python [CMD]:
 
 Install packages  [CMD]
 
-    pip install selenium python-dateutil requests Pillow
+    pip install selenium python-dateutil requests Pillow transformers torch torchvision
 
 
 Create folder "kfintech_python" in Documents
-Place the files config.ini, kfintech_users.csv, kfintech_firefox.py, kfintech_edge.py in folder
+Place the files config.ini, kfintech_users.csv, ocrapi.py, ocrml.py, kfintech_firefox.py, kfintech_edge.py in folder
 "C:\Users\<username>\Documents\kfintech_python\kfintech_users.csv"
 
 kfintech_users.csv should have data like below:
