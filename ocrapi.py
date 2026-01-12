@@ -13,7 +13,7 @@ def solve_captcha(image_path):
         }
         response = requests.post(url, files={"file": f}, data=payload)
     result = response.json()
-    print(result)
+    # print(result)
     if result["IsErroredOnProcessing"]:
         return None
     return result["ParsedResults"][0]["ParsedText"].strip().replace(" ", "")
