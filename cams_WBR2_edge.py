@@ -24,8 +24,8 @@ def handle_cookie_and_popup(browser):
         logging.error(f"Error handling Disclamer pop-up : {e}")
     try:
         time.sleep(2)
-        info = browser.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/mat-dialog-container/app-camsterms/div/div/mat-icon",)
-        info.click()
+        # info = browser.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/mat-dialog-container/app-camsterms/div/div/mat-icon",)
+        # info.click()
     except Exception as e:
         logging.error(f"Error handling info pop-up : {e}")
 

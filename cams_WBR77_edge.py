@@ -24,8 +24,8 @@ def handle_cookie_and_popup(browser):
         logging.error(f"Error handling Disclamer pop-up : {e}")
     try:
         time.sleep(2)
-        info = browser.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/mat-dialog-container/app-camsterms/div/div/mat-icon",)
-        info.click()
+        # info = browser.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/mat-dialog-container/app-camsterms/div/div/mat-icon",)
+        # info.click()
     except Exception as e:
         logging.error(f"Error handling info pop-up : {e}")
 
@@ -142,7 +142,7 @@ for user in userlist:
             browser.execute_script("arguments[0].click();", delivery)
             time.sleep(1)
 
-            checkbox=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[29]/div/p/mat-checkbox/label/span[1]")
+            checkbox=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[30]/div/p/mat-checkbox/label/span[1]")
             browser.execute_script("arguments[0].click();", checkbox)
             time.sleep(0.5)
             # checkbox1=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[29]/div/mat-checkbox[1]/label/span[1]")
@@ -167,7 +167,7 @@ for user in userlist:
             # browser.execute_script("arguments[0].click();", checkbox7)
             # time.sleep(0.5)
 
-            month_sel=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[30]/div/mat-form-field/div/div[1]/div[3]/mat-select")
+            month_sel=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[31]/div/mat-form-field/div/div[1]/div[3]/mat-select")
             month_sel.send_keys(config['cams']['month_yr'])
             time.sleep(0.5)
 
@@ -181,16 +181,16 @@ for user in userlist:
             # en_date.send_keys(Keys.CONTROL + 'a', Keys.BACKSPACE)
             # en_date.send_keys(config['cams']['end_date'])
             # time.sleep(1)
-            next=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[35]/div/input")
+            next=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[36]/div/input")
             browser.execute_script("arguments[0].click();", next)
             time.sleep(2)
-            pswd=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[3]/div/div/form/div/div/div[7]/div[1]/mat-form-field/div/div[1]/div[3]/input")
+            pswd=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[3]/div/div/form/div/div/div[8]/div[1]/mat-form-field/div/div[1]/div[3]/input")
             pswd.send_keys(user[1])
             time.sleep(2)
-            pswd_confirm=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[3]/div/div/form/div/div/div[7]/div[2]/mat-form-field/div/div[1]/div[3]/input")
+            pswd_confirm=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[3]/div/div/form/div/div/div[8]/div[2]/mat-form-field/div/div[1]/div[3]/input")
             pswd_confirm.send_keys(user[1])
             time.sleep(2)
-            submit=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[3]/div/div/form/div/div/div[9]/div[2]/input[1]")
+            submit=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[3]/div/div/form/div/div/div[10]/div[2]/input[1]")
             browser.execute_script("arguments[0].click();", submit)
             time.sleep(15)
             # element wait
