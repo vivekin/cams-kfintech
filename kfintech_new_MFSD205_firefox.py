@@ -121,6 +121,16 @@ for user in userlist:
         # popup = browser.find_element(By.XPATH, "/html/body/div[2]/div[3]/div/h2/button")
         # popup.click()
         # time.sleep(2)
+
+        def wait_overlay():
+            try:
+                # wait.until(EC.invisibility_of_element_located((By.CSS_SELECTOR, "ul.MuiMenu-list")))
+                time.sleep(2)
+                wait.until(EC.invisibility_of_element_located((By.CSS_SELECTOR, "div.MuiBox-root.css-rg1czi")))
+                time.sleep(1)
+            except Exception as e:
+                logging.error(f"wait_overlay error: {e}")
+
         webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
         time.sleep(2)
         page = browser.find_element(By.XPATH, "/html/body/div/div/div/div/div/ul/a[1]")
@@ -128,14 +138,17 @@ for user in userlist:
         mailback = browser.find_element(By.XPATH, "/html/body/div/div/div/div/div/ul/a[3]")
         mailback.click()
         time.sleep(2)
+        wait_overlay()
         page = browser.find_element(By.XPATH,"/html/body/div/div/div/div/div/ul/a[3]",)
         logging.info(f"Current page: {page.text}")
         # MFSD205 - Brokerage Report
         brokerage_tab = browser.find_element(By.XPATH,"/html/body/div/div[2]/main/div/div[2]/div/div[3]/div[1]/div/div[2]",)
         brokerage_tab.click()
+        wait_overlay()
         brokerage_report = browser.find_element(By.XPATH,"/html/body/div/div[2]/main/div/div[2]/div/div[3]/div[2]/div/ul/a[1]/li/div",)
         brokerage_report.click()
         time.sleep(2)
+        wait_overlay()
         page = browser.find_element(By.XPATH,"/html/body/div/main/div/div[2]/div/div/div[1]/div",)
         logging.info(f"Current page: {page.text}")
         logging.info("Filling mailback request form ...")
@@ -156,7 +169,7 @@ for user in userlist:
         # adhoc = browser.find_element(By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div[2]/div[1]/div[3]/fieldset/div/label/span[1]/input",)
         # adhoc.click()
         time.sleep(0.5)
-        csv_sel = browser.find_element(By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div[2]/div[1]/div[4]/fieldset/div/div/div[2]/label/span[1]/input",)
+        csv_sel = browser.find_element(By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div[2]/div[1]/div[4]/fieldset/div/div/div[1]/label/span[1]/input",)
         csv_sel.click()
 
         try:
@@ -180,14 +193,7 @@ for user in userlist:
         extraction_pass_confirm.send_keys(user[2])
         time.sleep(1)
 
-        def wait_overlay():
-            try:
-                wait.until(EC.invisibility_of_element_located((By.CSS_SELECTOR, "ul.MuiMenu-list")))
-                wait.until(EC.invisibility_of_element_located((By.CSS_SELECTOR, "div.MuiBox-root.css-rg1czi")))
-                time.sleep(1)
-            except Exception as e:
-                logging.error(f"wait_overlay error: {e}")
-
+        
         funds_drpdwn = browser.find_element(By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div[2]/div[1]/div[1]/div[1]/div/div",)
         funds_drpdwn.click()
         time.sleep(1)
@@ -206,7 +212,7 @@ for user in userlist:
         time.sleep(1)
         webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
         wait_overlay()
-        time.sleep(1)
+        time.sleep(2)
 
         brokerage_drpdwn = wait.until(EC.element_to_be_clickable((By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div[2]/div[1]/div[1]/div[3]/div/div")))
         brokerage_drpdwn.click()
@@ -226,10 +232,11 @@ for user in userlist:
         time.sleep(1)
         webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
         wait_overlay()
-        time.sleep(1)
+        time.sleep(2)
         
         submit = wait.until(EC.element_to_be_clickable((By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div[3]/button[1]")))
         submit.click()
+        wait_overlay()
         logging.info("Mailback request submitted")
         time.sleep(4)
         try:

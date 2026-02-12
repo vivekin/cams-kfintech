@@ -115,6 +115,15 @@ for user in userlist:
         # popup = browser.find_element(By.XPATH, "/html/body/div[2]/div[3]/div/h2/button")
         # popup.click()
         # time.sleep(2)
+        def wait_overlay():
+            try:
+                # wait.until(EC.invisibility_of_element_located((By.CSS_SELECTOR, "ul.MuiMenu-list")))
+                time.sleep(2)
+                wait.until(EC.invisibility_of_element_located((By.CSS_SELECTOR, "div.MuiBox-root.css-rg1czi")))
+                time.sleep(1)
+            except Exception as e:
+                logging.error(f"wait_overlay error: {e}")
+
         webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
         time.sleep(2)
         page = browser.find_element(By.XPATH, "/html/body/div/div/div/div/div/ul/a[1]")
@@ -122,6 +131,7 @@ for user in userlist:
         mailback = browser.find_element(By.XPATH, "/html/body/div/div/div/div/div/ul/a[3]")
         mailback.click()
         time.sleep(2)
+        wait_overlay()
         page = wait.until(EC.element_to_be_clickable((By.XPATH,"/html/body/div/div/div/div/div/ul/a[3]")))
         logging.info(f"Current page: {page.text}")
         # MFSD201 - Transaction Report
@@ -130,6 +140,7 @@ for user in userlist:
         transaction_report = browser.find_element(By.XPATH,"/html/body/div/div[2]/main/div/div[2]/div/div[3]/div[2]/div/ul/a[7]/li/div",)
         transaction_report.click()
         time.sleep(2)
+        wait_overlay()
         page = browser.find_element(By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div[1]/div",)
         logging.info(f"Current page: {page.text}")
         logging.info("Filling mailback request form ...")
@@ -183,6 +194,7 @@ for user in userlist:
         time.sleep(1)
         submit = browser.find_element(By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div[4]/button[1]",)
         submit.click()
+        wait_overlay()
         logging.info("Mailback request submitted")
         time.sleep(4)
         try:
