@@ -16,7 +16,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from ocrml import solve_captcha
+from ocrapi import solve_captcha
 
 
 print("Script running ...")
@@ -152,6 +152,9 @@ for user in userlist:
         browser.execute_script("arguments[0].removeAttribute('readonly')", en_month)
         en_month.send_keys(Keys.CONTROL + 'a', Keys.BACKSPACE)
         en_month.send_keys(config['kfintech']['end_month'])
+        # time.sleep(0.5)
+        # adhoc = browser.find_element(By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div[2]/div[1]/div[3]/fieldset/div/label/span[1]/input",)
+        # adhoc.click()
         time.sleep(0.5)
         csv_sel = browser.find_element(By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div[2]/div[1]/div[4]/fieldset/div/div/div[2]/label/span[1]/input",)
         csv_sel.click()
