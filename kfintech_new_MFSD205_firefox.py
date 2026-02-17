@@ -193,7 +193,6 @@ for user in userlist:
         extraction_pass_confirm.send_keys(user[2])
         time.sleep(1)
 
-        
         funds_drpdwn = browser.find_element(By.XPATH,"/html/body/div/main/div/div[2]/div/div/form/div[2]/div[1]/div[1]/div[1]/div/div",)
         funds_drpdwn.click()
         time.sleep(1)
