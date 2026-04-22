@@ -12,19 +12,19 @@ from selenium.webdriver.common.by import By
 
 def handle_cookie_and_popup(browser):
     try:
-        page = browser.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/mat-dialog-container/app-camsterms/div/mat-dialog-content/p[1]")
+        page = browser.find_element(By.XPATH, "/html/body/div[2]/div[2]/div/mat-dialog-container/app-camsterms/div/mat-dialog-content/p[1]")
         logging.info(f"Current page: {page.text}")
-        disclaimer = browser.find_element(By.XPATH,'/html/body/div[1]/div[2]/div/mat-dialog-container/app-camsterms/div/mat-dialog-content/div[1]/mat-radio-group/mat-radio-button[1]/label/span[1]/span[2]',)
+        disclaimer = browser.find_element(By.XPATH,'/html/body/div[2]/div[2]/div/mat-dialog-container/app-camsterms/div/mat-dialog-content/div[1]/mat-radio-group/mat-radio-button[1]/label/span[1]/span[2]',)
         browser.execute_script("arguments[0].click();", disclaimer)
-        disclaimer_submit = browser.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/mat-dialog-container/app-camsterms/div/mat-dialog-content/div[2]/input",)
+        disclaimer_submit = browser.find_element(By.XPATH,"/html/body/div[2]/div[2]/div/mat-dialog-container/app-camsterms/div/mat-dialog-content/div[2]/input",)
         time.sleep(1)
         disclaimer_submit.click()
     except Exception as e:
         logging.error(f"Error handling Disclamer pop-up : {e}")
     try:
         time.sleep(2)
-        info = browser.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/mat-dialog-container/app-camsterms/div/div/mat-icon",)
-        info.click()
+        # info = browser.find_element(By.XPATH,"/html/body/div[2]/div[2]/div/mat-dialog-container/app-camsterms/div/div/mat-icon",)
+        # info.click()
     except Exception as e:
         logging.error(f"Error handling info pop-up : {e}")
 
@@ -76,7 +76,7 @@ for user in userlist:
         logging.info(f"Processing user {user[0]} ...")
         logging.info("Closing pop-ups ...")
         handle_cookie_and_popup(browser=browser)
-        page = browser.find_element(By.XPATH, "/html/body/app-root/div/app-distributorlayout/div[2]/div/div/div[1]/ul/li[1]/p")
+        page = browser.find_element(By.XPATH, "/html/body/app-root/div/app-distributorlayout/div[2]/div/div/div[2]/div/app-distributmailback/div/div/div/div/div/h1")
         logging.info(f"Current page: {page.text}")
         email=browser.find_element(By.XPATH, "/html/body/app-root/div/app-distributorlayout/div[2]/div/div/div[2]/div/app-distributmailback/div/div/div/form/div[1]/div/mat-form-field/div/div[1]/div[3]/input")
         email.clear()
@@ -107,7 +107,7 @@ for user in userlist:
         dropdown=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[1]/div[1]/form/div/div[2]/mat-form-field/div/div[1]/div[3]/mat-select/div/div[2]")
         browser.execute_script("arguments[0].click();", dropdown)
         time.sleep(5)
-        fund=browser.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div/mat-option-select-all/div/mat-pseudo-checkbox")
+        fund=browser.find_element(By.XPATH, "/html/body/div[2]/div[2]/div/div/div/mat-option-select-all/div/mat-pseudo-checkbox")
         browser.execute_script("arguments[0].click();", fund)
         time.sleep(4)
         webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
@@ -126,13 +126,13 @@ for user in userlist:
             output_opn=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[3]/div[1]/mat-form-field/div/div[1]/div[3]/mat-select/div/div[1]")
             browser.execute_script("arguments[0].click();", output_opn)
             time.sleep(2)
-            output=browser.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div/mat-option[7]/span")
+            output=browser.find_element(By.XPATH, "/html/body/div[2]/div[2]/div/div/div/mat-option[7]/span")
             browser.execute_script("arguments[0].click();", output)
             time.sleep(2)
             delivery_opn=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[3]/div[2]/mat-form-field/div/div[1]/div[3]/mat-select/div/div[2]/div")
             browser.execute_script("arguments[0].click();", delivery_opn)
             time.sleep(2)
-            delivery=browser.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div/mat-option[2]/span")
+            delivery=browser.find_element(By.XPATH, "/html/body/div[2]/div[2]/div/div/div/mat-option[2]/span")
             browser.execute_script("arguments[0].click();", delivery)
             time.sleep(1)
             st_date = browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[32]/div/div[1]/div[1]/mat-form-field/div/div[1]/div[3]/input")
