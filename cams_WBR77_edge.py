@@ -10,6 +10,8 @@ from selenium import webdriver
 from selenium.webdriver.edge.service import Service
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 def handle_cookie_and_popup(browser):
     try:
@@ -75,6 +77,7 @@ for user in userlist:
     # Creating an instance webdriver
     browser = webdriver.Edge(service=service)
     browser.get("https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback")
+    wait = WebDriverWait(browser, 10)
     time.sleep(5)
     try:
         logging.info(f"Processing user {user[0]} ...")
@@ -116,85 +119,91 @@ for user in userlist:
         time.sleep(4)
         webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
 
-        time.sleep(2)
-        #your earnings tab
-        earnings=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[1]/div/mat-tab-group/mat-tab-header/div[2]/div/div/div[3]/div")
-        browser.execute_script("arguments[0].click();", earnings)
+        # time.sleep(2)
+        # #your earnings tab
+        # earnings=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div/mat-tab-group/mat-tab-header/div[2]/div/div/div[3]")
+        # browser.execute_script("arguments[0].click();", earnings)
+        
+        time.sleep(0.5)
+        wait.until(EC.invisibility_of_element_located((By.CSS_SELECTOR, ".newloadersty")))
+        time.sleep(0.5)
+        earnings=wait.until(EC.element_to_be_clickable((By.XPATH,"/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div/mat-tab-group/mat-tab-header/div[2]/div/div/div[3]")))
+        earnings.click()
         time.sleep(3)
 
         try:
             # WBR77. Consolidated Brokerage Payout Details
             time.sleep(2)
-            nav=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[1]/ul/li[15]")
+            nav=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[1]/ul/li[15]")
             browser.execute_script("arguments[0].click();", nav)
            
             time.sleep(5)
-            output_opn=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[3]/div[1]/mat-form-field/div/div[1]/div[3]/mat-select/div/div[2]")
+            output_opn=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[2]/form/div/div/div[3]/div[1]/mat-form-field/div/div[1]/div[3]/mat-select/div/div[2]")
             browser.execute_script("arguments[0].click();", output_opn)
             time.sleep(2)
             output=browser.find_element(By.XPATH, "/html/body/div[2]/div[2]/div/div/div/mat-option[5]/span")
             browser.execute_script("arguments[0].click();", output)
             time.sleep(2)
-            delivery_opn=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[3]/div[2]/mat-form-field/div/div[1]/div[3]/mat-select/div/div[2]/div")
+            delivery_opn=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[2]/form/div/div/div[3]/div[2]/mat-form-field/div/div[1]/div[3]/mat-select/div/div[2]/div")
             browser.execute_script("arguments[0].click();", delivery_opn)
             time.sleep(2)
             delivery=browser.find_element(By.XPATH, "/html/body/div[2]/div[2]/div/div/div/mat-option[2]/span")
             browser.execute_script("arguments[0].click();", delivery)
             time.sleep(1)
 
-            checkbox=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[30]/div/p/mat-checkbox/label/span[1]")
+            checkbox=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[2]/form/div/div/div[30]/div/p/mat-checkbox/label/span[1]")
             browser.execute_script("arguments[0].click();", checkbox)
             time.sleep(0.5)
-            # checkbox1=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[29]/div/mat-checkbox[1]/label/span[1]")
+            # checkbox1=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[2]/form/div/div/div[29]/div/mat-checkbox[1]/label/span[1]")
             # browser.execute_script("arguments[0].click();", checkbox1)
             # time.sleep(0.5)
-            # checkbox2=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[29]/div/mat-checkbox[2]/label/span[1]")
+            # checkbox2=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[2]/form/div/div/div[29]/div/mat-checkbox[2]/label/span[1]")
             # browser.execute_script("arguments[0].click();", checkbox2)
             # time.sleep(0.5)
-            # checkbox3=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[29]/div/mat-checkbox[3]/label/span[1]")
+            # checkbox3=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[2]/form/div/div/div[29]/div/mat-checkbox[3]/label/span[1]")
             # browser.execute_script("arguments[0].click();", checkbox3)
             # time.sleep(0.5)
-            # checkbox4=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[29]/div/mat-checkbox[4]/label/span[1]")
+            # checkbox4=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[2]/form/div/div/div[29]/div/mat-checkbox[4]/label/span[1]")
             # browser.execute_script("arguments[0].click();", checkbox4)
             # time.sleep(0.5)
-            # checkbox5=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[29]/div/mat-checkbox[5]/label/span[1]")
+            # checkbox5=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[2]/form/div/div/div[29]/div/mat-checkbox[5]/label/span[1]")
             # browser.execute_script("arguments[0].click();", checkbox5)
             # time.sleep(0.5)
-            # checkbox6=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[29]/div/mat-checkbox[6]/label/span[1]")
+            # checkbox6=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[2]/form/div/div/div[29]/div/mat-checkbox[6]/label/span[1]")
             # browser.execute_script("arguments[0].click();", checkbox6)
             # time.sleep(0.5)
-            # checkbox7=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[29]/div/mat-checkbox[7]/label/span[1]")
+            # checkbox7=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[2]/form/div/div/div[29]/div/mat-checkbox[7]/label/span[1]")
             # browser.execute_script("arguments[0].click();", checkbox7)
             # time.sleep(0.5)
 
-            month_sel=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[31]/div/mat-form-field/div/div[1]/div[3]/mat-select")
+            month_sel=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[2]/form/div/div/div[31]/div/mat-form-field/div/div[1]/div[3]/mat-select")
             month_sel.send_keys(config['cams']['month_yr'])
             time.sleep(0.5)
 
-            # st_date = browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[31]/div/div[1]/div[1]/mat-form-field/div/div[1]/div[3]/input")
+            # st_date = browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[2]/form/div/div/div[31]/div/div[1]/div[1]/mat-form-field/div/div[1]/div[3]/input")
             # browser.execute_script("arguments[0].removeAttribute('readonly')", st_date)
             # st_date.send_keys(Keys.CONTROL + 'a', Keys.BACKSPACE)
             # st_date.send_keys('01-Jan-1995')
             # time.sleep(0.5)
-            # en_date = browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[33]/div/div[1]/div[2]/mat-form-field/div/div[1]/div[3]/input")
+            # en_date = browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[2]/form/div/div/div[33]/div/div[1]/div[2]/mat-form-field/div/div[1]/div[3]/input")
             # browser.execute_script("arguments[0].removeAttribute('readonly')", en_date)
             # en_date.send_keys(Keys.CONTROL + 'a', Keys.BACKSPACE)
             # en_date.send_keys(config['cams']['end_date'])
             # time.sleep(1)
-            next=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[2]/form/div/div/div[36]/div/input")
+            next=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[2]/form/div/div/div[36]/div/input")
             browser.execute_script("arguments[0].click();", next)
             time.sleep(2)
-            pswd=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[3]/div/div/form/div/div/div[8]/div[1]/mat-form-field/div/div[1]/div[3]/input")
+            pswd=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[3]/div/div/form/div/div/div[8]/div[1]/mat-form-field/div/div[1]/div[3]/input")
             pswd.send_keys(user[1])
             time.sleep(2)
-            pswd_confirm=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[3]/div/div/form/div/div/div[8]/div[2]/mat-form-field/div/div[1]/div[3]/input")
+            pswd_confirm=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[3]/div/div/form/div/div/div[8]/div[2]/mat-form-field/div/div[1]/div[3]/input")
             pswd_confirm.send_keys(user[1])
             time.sleep(2)
-            submit=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[3]/div/div/form/div/div/div[10]/div[2]/input[1]")
+            submit=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[3]/div/div/form/div/div/div[10]/div[2]/input[1]")
             browser.execute_script("arguments[0].click();", submit)
             time.sleep(15)
             # element wait
-            submit_response=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[2]/div[2]/div[3]/div/div/div[2]/p[1]")
+            submit_response=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[3]/div/div/div[2]/p[1]")
             logging.info(f"Mailback request submit response: {submit_response.text}")
             cf=re.search("is .* and at", submit_response.text)
             if cf:
@@ -223,5 +232,3 @@ for i in status.keys():
     logging.info(f"{i}: {status[i]}")
 logging.info("#####################################")
 print("Script exiting ...")
-
-
