@@ -137,7 +137,7 @@ for user in userlist:
         # MFSD201 - Transaction Report
         procurement_tab = wait.until(EC.element_to_be_clickable((By.XPATH,"/html/body/div/div[2]/main/div/div[2]/div/div[3]/div[1]/div/div[1]")))
         procurement_tab.click()
-        transaction_report = browser.find_element(By.XPATH,"/html/body/div/div[2]/main/div/div[2]/div/div[3]/div[2]/div/ul/a[7]/li/div",)
+        transaction_report = browser.find_element(By.XPATH,"//span[contains(@class,'MuiListItemText-primary') and text()='MFSD201 -Transaction Report']",)
         transaction_report.click()
         time.sleep(2)
         wait_overlay()

@@ -145,7 +145,7 @@ for user in userlist:
         brokerage_tab = browser.find_element(By.XPATH,"/html/body/div/div[2]/main/div/div[2]/div/div[3]/div[1]/div/div[2]",)
         brokerage_tab.click()
         wait_overlay()
-        brokerage_report = browser.find_element(By.XPATH,"/html/body/div/div[2]/main/div/div[2]/div/div[3]/div[2]/div/ul/a[1]/li/div",)
+        brokerage_report = browser.find_element(By.XPATH,"//span[contains(@class,'MuiListItemText-primary') and text()='MFSD205 - Brokerage Reports']",)
         brokerage_report.click()
         time.sleep(2)
         wait_overlay()

@@ -130,7 +130,7 @@ for user in userlist:
         # MFSD230 - SIP/STP Report 
         sipstp_tab = browser.find_element(By.XPATH,"/html/body/div/div[2]/main/div/div[2]/div/div[3]/div[1]/div/div[3]",)
         sipstp_tab.click()
-        sipstp_report = browser.find_element(By.XPATH,"/html/body/div/div[2]/main/div/div[2]/div/div[3]/div[2]/div/ul/a[4]/li/div",)
+        sipstp_report = browser.find_element(By.XPATH,"//span[contains(@class,'MuiListItemText-primary') and text()='MFSD230-SIP/STP Report']",)
         sipstp_report.click()
         time.sleep(2)
         page = browser.find_element(By.XPATH,"/html/body/div/main/div/div[2]/div/div/div[1]",)
