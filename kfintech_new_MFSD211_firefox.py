@@ -39,8 +39,8 @@ logging.info(f"START - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - v.1")
 
 today = date.today()
 logging.info(f"Today's date: {formatted_datetime}")
-logging.info(f"[config.ini] start_date: {config['kfintech']['start_date']}")
-logging.info(f"[config.ini] end_date: {config['kfintech']['end_date']}")
+# logging.info(f"[config.ini] start_date: {config['kfintech']['start_date']}")
+# logging.info(f"[config.ini] end_date: {config['kfintech']['end_date']}")
 status={}
 
 # Fetching kfintech user list
@@ -173,7 +173,7 @@ for user in userlist:
             logging.info("email check")
             # fieldset = browser.find_element(By.CSS_SELECTOR, "fieldset.MuiFormControl-root.css-l0oyuh")
             # checkboxes = fieldset.find_elements(By.CSS_SELECTOR, "input.css-j8yymo[type='checkbox']")
-            checkboxes = browser.find_elements(By.XPATH,"//fieldset[legend[normalize-space(.)='I want this Report for :']]//input[@type='checkbox']")
+            checkboxes = browser.find_elements(By.XPATH,"//fieldset[legend[normalize-space(.)='I Want this Report for']]//input[@type='checkbox']")
             for checkbox in checkboxes:
                 logging.info(f"email : {checkbox}")
                 time.sleep(1)
