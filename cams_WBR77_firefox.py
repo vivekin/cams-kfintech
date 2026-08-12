@@ -148,7 +148,7 @@ for user in userlist:
             browser.execute_script("arguments[0].click();", delivery)
             time.sleep(1)
 
-            checkbox=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[2]/form/div/div/div[31]/div/p/mat-checkbox/label/span[1]")
+            checkbox=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[2]/form/div/div/div[32]/div/p/mat-checkbox/label/span[1]")
             browser.execute_script("arguments[0].click();", checkbox)
             time.sleep(0.5)
             # checkbox1=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[2]/form/div/div/div[30]/div/mat-checkbox[1]/label/span[1]")
@@ -173,7 +173,7 @@ for user in userlist:
             # browser.execute_script("arguments[0].click();", checkbox7)
             # time.sleep(0.5)
 
-            month_sel=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[2]/form/div/div/div[32]/div/mat-form-field/div/div[1]/div[3]/mat-select")
+            month_sel=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[2]/form/div/div/div[33]/div/mat-form-field/div/div[1]/div[3]/mat-select")
             month_sel.send_keys(config['cams']['month_yr'])
             time.sleep(0.5)
 
@@ -187,7 +187,7 @@ for user in userlist:
             # en_date.send_keys(Keys.CONTROL + 'a', Keys.BACKSPACE)
             # en_date.send_keys(config['cams']['end_date'])
             # time.sleep(1)
-            next=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[2]/form/div/div/div[37]/div/input")
+            next=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[2]/form/div/div/div[38]/div/input")
             browser.execute_script("arguments[0].click();", next)
             time.sleep(2)
             pswd=browser.find_element(By.XPATH, "/html/body/app-root/div/app-reports/div/div[2]/div/div[3]/div[2]/div[3]/div/div/form/div/div/div[8]/div[1]/mat-form-field/div/div[1]/div[3]/input")
