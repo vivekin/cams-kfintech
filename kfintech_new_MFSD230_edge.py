@@ -74,8 +74,13 @@ for user in userlist:
         page = browser.find_element(By.XPATH, "/html/body/div/div[2]/div[1]/div[2]/div/h5")
         logging.info(f"Current page: {page.text}")
         loggedin=False
+        attempt=0
 
         while(loggedin==False):
+            attempt+=1
+            if attempt > 10:
+                logging.error(f"Max login attempts reached for user {user[0]}")
+                break
             time.sleep(0.5)
             userlogin_name = browser.find_element(By.XPATH,"/html/body/div/div[2]/div[1]/div[2]/div/form/div/div/div[1]/div/input",)
             userlogin_name.send_keys(Keys.CONTROL + 'a', Keys.BACKSPACE)
@@ -106,15 +111,26 @@ for user in userlist:
             time.sleep(1)
             try:
                 # Wait briefly for captcha error toast
-                toast = WebDriverWait(browser, 3).until(
-                    EC.presence_of_element_located((By.XPATH, "/html/body/div/div[2]/div[2]/div"))
-                )
-                logging.info("Wrong captcha, retrying...")
+                toast = WebDriverWait(browser, 3).until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".MuiSnackbar-root")))
+                logging.info(toast.text)
+                # logging.info("Wrong captcha, retrying...")
                 loggedin=False
             except Exception:
                 logging.info("No error toast, login likely succeeded!")
                 loggedin=True
+
+            try:
+                # toast = WebDriverWait(browser, 1).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[2]/div[3]/div")))
+                toast = WebDriverWait(browser, 1).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "div.MuiPaper-root")))
+                pwdtoast = browser.find_element(By.XPATH, "/html/body/div[2]/div[3]/div/h2/button")
+                pwdtoast.click()
+                logging.info("Closed password expired toast...")
+            except Exception:
+                logging.info("No password toast")
    
+        if not loggedin:
+            continue
+
         time.sleep(7)
         # popup = browser.find_element(By.XPATH, "/html/body/div[2]/div[3]/div/h2/button")
         # popup.click()
