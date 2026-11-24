@@ -11,6 +11,18 @@ fill email field
 #mat-input-0
 html body app-root div.theme-green.ng-star-inserted app-distributorlayout.ng-star-inserted div.correct-details.ng-star-inserted div.container.container-boxed div div div.transact_details app-distributmailback.ng-star-inserted div.dismailback.ng-star-inserted div.pad-lr div form.ng-pristine.ng-invalid.ng-star-inserted.ng-touched div div mat-form-field.mat-form-field.full-width.ng-tns-c108-5.mat-primary.mat-form-field-type-mat-input.mat-form-field-appearance-outline.mat-form-field-can-float.ng-pristine.ng-invalid.ng-star-inserted.mat-form-field-invalid.ng-touched div.mat-form-field-wrapper.ng-tns-c108-5 div.mat-form-field-flex.ng-tns-c108-5 div.mat-form-field-infix.ng-tns-c108-5 input#mat-input-0.mat-input-element.mat-form-field-autofill-control.form-control.ng-tns-c108-5.ng-pristine.ng-invalid.cdk-text-field-autofill-monitored.ng-touched
 
+click submit button
+.check-now-btn
+html body app-root div.theme-green.ng-star-inserted app-distributorlayout.ng-star-inserted div.correct-details.ng-star-inserted div.container.container-boxed div div div.transact_details app-distributmailback.ng-star-inserted div.dismailback.ng-star-inserted div.pad-lr div form.ng-pristine.ng-invalid.ng-star-inserted.ng-touched div div input.check-now-btn.mr-right
+
+
+if page shows "Your session is still active. Please click here to end the previous session." , then click , and try login again
+.clickhere
+html body app-root div.theme-green.ng-star-inserted app-distributorlayout.ng-star-inserted div.correct-details.ng-star-inserted div.container.container-boxed div div div.transact_details app-distributmailback.ng-star-inserted div.dismailback.ng-star-inserted div.pad-lr div div.ng-star-inserted div div h4.clicksession a.clickhere
+
+click logout
+.mat-icon
+html body app-root div.theme-green.ng-star-inserted app-reports.ng-star-inserted div.container.container-boxed.mr-tp-105 div div.userdetails.ng-star-inserted mat-icon.mat-icon.notranslate.logout.material-icons.mat-icon-no-color
 
 
 
