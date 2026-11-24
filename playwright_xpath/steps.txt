@@ -1,0 +1,35 @@
+CAMS
+goto
+https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback
+
+click if popup banner exists
+.close-icon
+html body div.cdk-overlay-container div.cdk-global-overlay-wrapper div#cdk-overlay-0.cdk-overlay-pane mat-dialog-container#mat-dialog-0.mat-dialog-container.ng-tns-c145-0.ng-trigger.ng-trigger-dialogContainer.ng-star-inserted app-camsterms.ng-star-inserted div.regulecolor.ng-star-inserted div.close-icon.colsebanner
+
+
+fill email field
+#mat-input-0
+html body app-root div.theme-green.ng-star-inserted app-distributorlayout.ng-star-inserted div.correct-details.ng-star-inserted div.container.container-boxed div div div.transact_details app-distributmailback.ng-star-inserted div.dismailback.ng-star-inserted div.pad-lr div form.ng-pristine.ng-invalid.ng-star-inserted.ng-touched div div mat-form-field.mat-form-field.full-width.ng-tns-c108-5.mat-primary.mat-form-field-type-mat-input.mat-form-field-appearance-outline.mat-form-field-can-float.ng-pristine.ng-invalid.ng-star-inserted.mat-form-field-invalid.ng-touched div.mat-form-field-wrapper.ng-tns-c108-5 div.mat-form-field-flex.ng-tns-c108-5 div.mat-form-field-infix.ng-tns-c108-5 input#mat-input-0.mat-input-element.mat-form-field-autofill-control.form-control.ng-tns-c108-5.ng-pristine.ng-invalid.cdk-text-field-autofill-monitored.ng-touched
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
