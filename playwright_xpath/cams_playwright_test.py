@@ -10,7 +10,6 @@ from dateutil.relativedelta import relativedelta
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
 
 URL = "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback"
-MAX_ATTEMPTS = 3
 
 POPUP_CLOSE = "mat-dialog-container .close-icon"
 EMAIL_INPUT = "#mat-input-0"
@@ -30,7 +29,7 @@ def close_popup_if_present(page):
  
  
 def try_login(page, email):
-    """Fill email and submit. Returns True if logged in, False if an old session blocked it."""
+    """Fill email and submit."""
     page.wait_for_selector(EMAIL_INPUT, state="visible", timeout=30000)
     page.fill(EMAIL_INPUT, email)
     print(f"Filled email: {email}")
@@ -46,10 +45,15 @@ def try_login(page, email):
     if page.locator(SESSION_CLICK_HERE).is_visible():
         print("Previous session still active, ending it")
         page.click(SESSION_CLICK_HERE)
-        return False
-    return True
- 
- 
+
+        page.wait_for_selector(EMAIL_INPUT, state="visible", timeout=30000)
+        page.fill(EMAIL_INPUT, email)
+        print(f"Filled email: {email}")
+
+        page.click(SUBMIT_BTN)
+        print("Clicked submit")
+
+  
 def main():
     print("Script running ...")
 
@@ -102,13 +106,8 @@ def main():
                 page.goto(URL, wait_until="domcontentloaded")
                 close_popup_if_present(page)
             
-                for attempt in range(1, MAX_ATTEMPTS + 1):
-                    print(f"Login attempt {attempt}/{MAX_ATTEMPTS}")
-                    if try_login(page, user[0]):
-                        break
-                else:
-                    raise RuntimeError("Could not log in after ending the previous session")
-            
+                try_login(page, user[0])
+                            
                 page.wait_for_timeout(3000)
                 # Click logout
                 page.click(LOGOUT_ICON)
