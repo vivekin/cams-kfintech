@@ -25,7 +25,20 @@ click logout
 html body app-root div.theme-green.ng-star-inserted app-reports.ng-star-inserted div.container.container-boxed.mr-tp-105 div div.userdetails.ng-star-inserted mat-icon.mat-icon.notranslate.logout.material-icons.mat-icon-no-color
 
 
+=================================================================================
 
+Kfintech
+
+goto
+https://dss.kfintech.com/dssweb/
+
+#userName
+#password
+#captcha
+.css-k008qs > canvas:nth-child(1)
+button.Sign In
+
+.MuiSnackbar-root
 
 
 
