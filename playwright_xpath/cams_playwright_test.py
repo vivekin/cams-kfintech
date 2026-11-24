@@ -1,4 +1,3 @@
-
 import csv
 import time
 import logging
@@ -29,7 +28,7 @@ def close_popup_if_present(page):
  
  
 def try_login(page, email):
-    """Fill email and submit."""
+    """Fill email and submit. Returns True if logged in, False if an old session blocked it."""
     page.wait_for_selector(EMAIL_INPUT, state="visible", timeout=30000)
     page.fill(EMAIL_INPUT, email)
     print(f"Filled email: {email}")
