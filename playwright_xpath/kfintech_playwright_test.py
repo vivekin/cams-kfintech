@@ -14,47 +14,68 @@ from dateutil.relativedelta import relativedelta
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
 from ocrapi import solve_captcha
 
-
+MAX_ATTEMPTS=10
 URL = "https://dss.kfintech.com/dssweb/"
 
 
-
+CANVAS_SEL = ".css-k008qs > canvas:nth-child(1)"
+POPUP_CLOSE_SEL = ".css-19ekb6t"          # the svg inside it is clickable too: ".css-19ekb6t > svg:nth-child(1)"
+DROPDOWN_SEL = ".css-vqps55 > div:nth-child(2) > div:nth-child(4)"
+LOGOUT_SEL = 'a.MuiButtonBase-root:has-text("Logout")'
 
 def close_popup_if_present(page):
+    """Close the popup banner only if it shows up."""
+    popup = page.locator(POPUP_CLOSE_SEL)
     try:
-        page.wait_for_selector(POPUP_CLOSE, state="visible", timeout=8000)
-        page.click(POPUP_CLOSE)
-        page.wait_for_selector(POPUP_CLOSE, state="detached", timeout=5000)
+        popup.first.wait_for(state="visible", timeout=8000)
+        popup.first.click()
         print("Popup banner closed")
     except PlaywrightTimeoutError:
-        print("No popup banner found, continuing")
+        print("No popup banner")
  
- 
-def try_login(page, email):
-    """Fill email and submit. Returns True if logged in, False if an old session blocked it."""
-    page.wait_for_selector(EMAIL_INPUT, state="visible", timeout=30000)
-    page.fill(EMAIL_INPUT, email)
-    print(f"Filled email: {email}")
- 
-    page.click(SUBMIT_BTN)
-    print("Clicked submit")
- 
-    # Wait for whichever appears first: the logout icon (success) or the "click here" session link
-    page.locator(f"{LOGOUT_ICON}, {SESSION_CLICK_HERE}").first.wait_for(
-        state="visible", timeout=60000
-    )
- 
-    if page.locator(SESSION_CLICK_HERE).is_visible():
-        print("Previous session still active, ending it")
-        page.click(SESSION_CLICK_HERE)
+def get_captcha_text(page) -> str:
+    canvas = page.locator(CANVAS_SEL)
+    canvas.wait_for(state="visible")
 
-        page.wait_for_selector(EMAIL_INPUT, state="visible", timeout=30000)
-        page.fill(EMAIL_INPUT, email)
-        print(f"Filled email: {email}")
+    # Same as your Selenium JS: canvas.toDataURL(...) minus the "data:image/png;base64," prefix
+    data_url = canvas.evaluate("el => el.toDataURL('image/png')")
+    png_bytes = base64.b64decode(data_url.split(",", 1)[1])
 
-        page.click(SUBMIT_BTN)
-        print("Clicked submit")
+    with open("temp_captcha.png", "wb") as f:
+        f.write(png_bytes)
 
+    return solve_captcha("temp_captcha.png")
+
+def try_login(page, usern, password):
+    for attempt in range(1, MAX_ATTEMPTS + 1):
+        print(f"Attempt {attempt}/{MAX_ATTEMPTS}")
+
+        page.fill("#userName", usern)
+        page.fill("#password", password)
+
+        captcha_text = get_captcha_text(page)
+        print("Captcha:", captcha_text)
+        page.fill("#captcha", captcha_text)
+
+        page.click('button:has-text("Sign In")')
+
+        # If a snackbar appears, the login failed -> retry
+        try:
+            page.wait_for_selector(".MuiSnackbar-root", state="visible", timeout=3000)
+            print("Snackbar:", page.inner_text(".MuiSnackbar-root"))
+            page.wait_for_selector(".MuiSnackbar-root", state="hidden", timeout=10000)
+            continue
+        except PlaywrightTimeoutError:
+            print("No snackbar, login looks successful")
+            break
+    else:
+        print("Failed after max attempts")
+
+def logout(page):
+    page.click(DROPDOWN_SEL)
+    page.wait_for_selector(LOGOUT_SEL, state="visible")
+    page.click(LOGOUT_SEL)
+    print("Logged out")
   
 def main():
     print("Script running ...")
@@ -68,7 +89,7 @@ def main():
     datetime_object = datetime.now()
     formatted_datetime = datetime_object.strftime("%Y_%m_%dT%H_%M_%S")
     logging.basicConfig(
-        filename=f"cams_playwright_test_{formatted_datetime}.log",  # Specify the log file name
+        filename=f"kfintech_playwright_test_{formatted_datetime}.log",  # Specify the log file name
         level=logging.INFO,  # Set the logging level to INFO
         format="%(asctime)s - %(levelname)s - %(message)s",  # Define the log message format
     )
@@ -78,14 +99,14 @@ def main():
     
     today = date.today()
     logging.info(f"Today's date: {formatted_datetime}")
-    logging.info(f"[config.ini] start_date: {config['cams']['start_date']}")
-    logging.info(f"[config.ini] end_date: {config['cams']['end_date']}")
+    logging.info(f"[config.ini] start_date: {config['kfintech']['start_date']}")
+    logging.info(f"[config.ini] end_date: {config['kfintech']['end_date']}")
     status={}
 
-    # Fetching cams user list
-    logging.info("Fetching cams user list ...\n")
+    # Fetching kfintech user list
+    logging.info("Fetching kfintech user list ...\n")
     userlist = []
-    with open("cams_users.csv", newline="") as csvfile:
+    with open("kfintech_users.csv", newline="") as csvfile:
         userreader = csv.reader(csvfile, delimiter=",")
         for row in userreader:
             userlist.append((row[0], row[1]))
@@ -95,6 +116,8 @@ def main():
     user_count = len(userlist)
     with sync_playwright() as p:
         browser = p.firefox.launch(headless=False)
+        context = browser.new_context()
+        page = context.new_page()
         # Process each user
         for user in userlist:
             try:
@@ -102,19 +125,17 @@ def main():
                 print(f"Processing {userlist.index(user)+1} of {user_count} users ...")
         
                 logging.info(f"Processing user {user[0]} ...")
-                context = browser.new_context()
-                page = context.new_page()
-            
+
                 page.goto(URL, wait_until="domcontentloaded")
-                close_popup_if_present(page)
+                try_login(page, user[0], user[1])
             
-                try_login(page, user[0])
-                            
+                close_popup_if_present(page)   # banner usually appears after login
+
+
                 page.wait_for_timeout(3000)
-                # Click logout
-                page.click(LOGOUT_ICON)
-                print("Clicked logout")
-            
+                logout(page)
+ 
+           
                 # Brief pause to see the result (remove when running headless)
                 page.wait_for_timeout(3000)
             
@@ -123,8 +144,7 @@ def main():
                 
             except Exception as e:
                 logging.error(f"Error processing user {user[0]}: {e}")
-            finally:
-                context.close()
+        context.close()
         browser.close()
 
     logging.info(f"END - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
