@@ -19,7 +19,7 @@ URL = "https://dss.kfintech.com/dssweb/"
 
 
 CANVAS_SEL = ".css-k008qs > canvas:nth-child(1)"
-POPUP_CLOSE_SEL = ".css-19ekb6t"          # the svg inside it is clickable too: ".css-19ekb6t > svg:nth-child(1)"
+POPUP_CLOSE_SEL = ".css-19ekb6t"
 DROPDOWN_SEL = ".css-vqps55 > div:nth-child(2) > div:nth-child(4)"
 LOGOUT_SEL = 'a.MuiButtonBase-root:has-text("Logout")'
 
@@ -37,7 +37,6 @@ def get_captcha_text(page) -> str:
     canvas = page.locator(CANVAS_SEL)
     canvas.wait_for(state="visible")
 
-    # Same as your Selenium JS: canvas.toDataURL(...) minus the "data:image/png;base64," prefix
     data_url = canvas.evaluate("el => el.toDataURL('image/png')")
     png_bytes = base64.b64decode(data_url.split(",", 1)[1])
 
@@ -70,6 +69,62 @@ def try_login(page, usern, password):
             break
     else:
         print("Failed after max attempts")
+
+def fill_readonly(locator, value):
+    locator.wait_for(state="visible")
+    locator.evaluate("el => el.removeAttribute('readonly')")
+    locator.fill(value)
+
+def download_MFSD201_report(page, config, extpass):
+    cfg = config["kfintech"]
+
+    # Navigate to the report
+    page.locator("p", has_text="Procurement Reports").first.click()
+    page.get_by_text("MFSD201").click()   # "MFSD201 -Transaction Report"
+
+    # Fund dropdown -> first entry
+    page.locator(".css-tti6gq").click()
+    menu = page.locator("#menu-")
+    menu.wait_for(state="visible")
+    
+    items = menu.get_by_role("menuitem")
+    print([t.strip() for t in items.all_inner_texts()])   # see what's in there
+    items.first.click()
+    
+    # make sure the menu is really gone before touching anything else
+    try:
+        menu.wait_for(state="hidden", timeout=5000)
+    except PlaywrightTimeoutError:
+        page.keyboard.press("Escape")
+        menu.wait_for(state="hidden", timeout=5000)
+
+    # Dates
+    fill_readonly(page.get_by_label("From Date"), cfg["start_date"])
+    fill_readonly(page.get_by_label("To Date"), cfg["end_date"])
+
+    # Radios
+    page.get_by_label("Without Split").check()
+    page.get_by_label("CSV", exact=True).check()
+
+    # Tick every checkbox under the "Email IDs" fieldset
+    checkboxes = page.locator("fieldset", has_text="Email IDs").locator("input[type='checkbox']")
+    for i in range(checkboxes.count()):
+        checkboxes.nth(i).check()
+
+    # Self extraction password
+    fill_readonly(page.get_by_label("Self Extraction Password", exact=True), extpass)
+    fill_readonly(page.get_by_label("Self Extraction Confirm Password", exact=True), extpass)
+
+    return "success till now"
+    # Submit
+    # page.get_by_role("button", name="Submit").click()
+
+    # # Read the result message
+    # msg = page.locator("p.MuiTypography-alignJustify").first
+    # msg.wait_for(state="visible", timeout=30000)
+    # text = msg.inner_text()
+    # print("Result:", text)
+    # return text
 
 def logout(page):
     page.click(DROPDOWN_SEL)
@@ -109,15 +164,21 @@ def main():
     with open("kfintech_users.csv", newline="") as csvfile:
         userreader = csv.reader(csvfile, delimiter=",")
         for row in userreader:
-            userlist.append((row[0], row[1]))
+            userlist.append((row[0], row[1], row[2]))
             status[row[0]]='-'
     # print(userlist)
     
     user_count = len(userlist)
     with sync_playwright() as p:
         browser = p.firefox.launch(headless=False)
+        # browser = p.chromium.launch(headless=False)
         context = browser.new_context()
         page = context.new_page()
+        page.on("response", lambda r: r.status >= 400 and
+        print(f"[{r.status}] {r.request.method} {r.url}"))
+        page.on("request", lambda r: r.url == URL and print(r.headers))
+        page.on("requestfailed", lambda r: print("FAILED", r.url, r.failure))
+
         # Process each user
         for user in userlist:
             try:
@@ -126,12 +187,18 @@ def main():
         
                 logging.info(f"Processing user {user[0]} ...")
 
+                
                 page.goto(URL, wait_until="domcontentloaded")
                 try_login(page, user[0], user[1])
             
+                page.wait_for_timeout(2000)
                 close_popup_if_present(page)   # banner usually appears after login
 
-
+                mailback = page.locator(".MuiDrawer-root").get_by_role("link", name="Mail Back Reports")
+                mailback.click()
+                
+                result=download_MFSD201_report(page, config, user[2])
+                status[user[0]]=result
                 page.wait_for_timeout(3000)
                 logout(page)
  
@@ -139,7 +206,6 @@ def main():
                 # Brief pause to see the result (remove when running headless)
                 page.wait_for_timeout(3000)
             
-                status[user[0]]="success"
                 logging.info(f"Processed user {user[0]}.\n")
                 
             except Exception as e:
