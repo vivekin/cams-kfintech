@@ -15,6 +15,10 @@ Click "Funds" dropdown
 aria-labelledby="funds-label"
 html body div#root main.MuiBox-root.css-13mcp66 div.MuiContainer-root.MuiContainer-maxWidthLm.css-14o3q1p div.MuiGrid2-root.MuiGrid2-direction-xs-row.div-container.css-1n5khr6 div.MuiBox-root.css-79elbk div.MuiBox-root.css-0 form div.MuiBox-root.css-t0051x div.MuiGrid2-root.MuiGrid2-container.MuiGrid2-direction-xs-row.MuiGrid2-spacing-xs-3.css-177xvbk div.MuiGrid2-root.MuiGrid2-direction-xs-row.MuiGrid2-grid-xs-12.MuiGrid2-grid-md-6.css-tnatjl div.MuiBox-root.css-0 div.MuiBox-root.css-0 div.MuiFormControl-root.MuiFormControl-fullWidth.css-f1hby7 div.MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-colorPrimary.MuiInputBase-formControl.MuiInputBase-sizeSmall.MuiSelect-root.css-tti6gq div.MuiSelect-select.MuiSelect-outlined.MuiSelect-multiple.MuiInputBase-input.MuiOutlinedInput-input.MuiInputBase-inputSizeSmall.css-uxvpzc
 
+Select First option in dropdown "All Funds"
+#\:r2hq\: > li:nth-child(1) > span:nth-child(1) > input:nth-child(1)
+html body div#menu-.MuiPopover-root.MuiMenu-root.MuiModal-root.css-749mnm div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPopover-paper.MuiMenu-paper.css-d1xm6m ul#:r2hq:.MuiList-root.MuiList-padding.MuiMenu-list.css-ubifyk li.MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-gutters.css-5dycmn span.MuiButtonBase-root.MuiCheckbox-root.MuiCheckbox-colorPrimary.MuiCheckbox-sizeMedium.PrivateSwitchBase-root.css-d771x4 input.PrivateSwitchBase-input.css-j8yymo
+
 
 Fill "From Date" with config['kfintech']['start_date']
 #\:r2f5\:
