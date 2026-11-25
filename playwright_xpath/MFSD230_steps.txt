@@ -32,7 +32,7 @@ div.css-zeemq5:nth-child(1) > label:nth-child(1) > span:nth-child(1) > input:nth
 html body div#root main.MuiBox-root.css-13mcp66 div.MuiContainer-root.MuiContainer-maxWidthLm.css-14o3q1p div.MuiGrid2-root.MuiGrid2-direction-xs-row.div-container.css-1n5khr6 div.MuiBox-root.css-79elbk div.MuiBox-root.css-0 form div.MuiBox-root.css-t0051x div.MuiGrid2-root.MuiGrid2-container.MuiGrid2-direction-xs-row.MuiGrid2-spacing-xs-3.css-177xvbk div.MuiGrid2-root.MuiGrid2-direction-xs-row.MuiGrid2-grid-xs-12.MuiGrid2-grid-md-6.css-tnatjl div.MuiBox-root.css-0 div.MuiBox-root.css-0 div.MuiFormGroup-root.MuiFormGroup-row.MuiRadioGroup-root.MuiRadioGroup-row.css-bhi5xm fieldset.MuiFormControl-root.css-1qk38wv div.MuiFormGroup-root.MuiFormGroup-row.MuiRadioGroup-root.MuiRadioGroup-row.css-bhi5xm div.MuiGrid-root.MuiGrid-container.css-1d3bbye div.MuiBox-root.css-zeemq5 label.MuiFormControlLabel-root.MuiFormControlLabel-labelPlacementEnd.css-8z896k span.MuiButtonBase-root.MuiRadio-root.MuiRadio-colorPrimary.PrivateSwitchBase-root.css-14c2a2c input.PrivateSwitchBase-input.css-j8yymo
 
 
-Under fieldset "Email IDs" select all type="checkbox"
+Under fieldset "I want this Report for" select all type="checkbox"
 
 
 
