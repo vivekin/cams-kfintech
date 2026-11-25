@@ -86,11 +86,11 @@ def download_MFSD201_report(page, config, extpass):
     page.locator(".css-tti6gq").click()
     menu = page.locator("#menu-")
     menu.wait_for(state="visible")
+    page.wait_for_timeout(1000)   # same as your time.sleep(1)
     
-    items = menu.get_by_role("menuitem")
-    print([t.strip() for t in items.all_inner_texts()])   # see what's in there
-    items.first.click()
-    
+    # first li that has a span, same as your XPath li/span[1]
+    menu.locator("li span").first.click()
+    page.keyboard.press("Escape")
     # make sure the menu is really gone before touching anything else
     try:
         menu.wait_for(state="hidden", timeout=5000)
@@ -112,19 +112,23 @@ def download_MFSD201_report(page, config, extpass):
         checkboxes.nth(i).check()
 
     # Self extraction password
-    fill_readonly(page.get_by_label("Self Extraction Password", exact=True), extpass)
-    fill_readonly(page.get_by_label("Self Extraction Confirm Password", exact=True), extpass)
+    # page.get_by_label("Self Extraction Password", exact=True).fill(extpass)
+    # page.get_by_label("Self Extraction Confirm Password", exact=True).fill(extpass)
+    pw_inputs = page.locator("form input[type='password']")
+    pw_inputs.first.wait_for(state="visible")
+    pw_inputs.nth(0).fill(extpass)
+    pw_inputs.nth(1).fill(extpass)
 
-    return "success till now"
     # Submit
-    # page.get_by_role("button", name="Submit").click()
+    page.get_by_role("button", name="Submit").click()
+    page.wait_for_timeout(2000)
 
-    # # Read the result message
-    # msg = page.locator("p.MuiTypography-alignJustify").first
-    # msg.wait_for(state="visible", timeout=30000)
-    # text = msg.inner_text()
-    # print("Result:", text)
-    # return text
+    # Read the result message
+    msg = page.locator("p.MuiTypography-alignJustify").first
+    msg.wait_for(state="visible", timeout=30000)
+    text = msg.inner_text()
+    print("Result:", text)
+    return text
 
 def logout(page):
     page.click(DROPDOWN_SEL)
@@ -198,8 +202,9 @@ def main():
                 mailback.click()
                 
                 result=download_MFSD201_report(page, config, user[2])
-                status[user[0]]=result
-                page.wait_for_timeout(3000)
+                kf=re.search(r"reference number (\w+)", result)
+                status[user[0]]=kf.group(1)
+                page.wait_for_timeout(2000)
                 logout(page)
  
            
