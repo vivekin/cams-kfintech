@@ -9,6 +9,7 @@ from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeo
 
 # pip install playwright
 # playwright install firefox
+# playwright install chromium
 
 # ---------------------------------------------------------------------------
 # XPath locators (unchanged from the Selenium version; Playwright accepts
