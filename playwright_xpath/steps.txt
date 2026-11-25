@@ -1,8 +1,17 @@
 CAMS
 WBR2
+config['cams']['start_date']
+config['cams']['end_date']
+
 WBR9
+01-Jan-1995
+
 WBR49
+config['cams']['start_date']
+config['cams']['end_date']
+
 WBR77
+config['cams']['month_yr']
 
 goto
 https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback
@@ -34,10 +43,22 @@ html body app-root div.theme-green.ng-star-inserted app-reports.ng-star-inserted
 
 Kfintech
 MFSD201
+config['kfintech']['start_date']
+config['kfintech']['end_date']
+
 MFSD205
+config['kfintech']['start_month']
+config['kfintech']['end_month']
+
 MFSD211
+01/01/1994
+
 MFSD230
+config['kfintech']['start_date']
+config['kfintech']['end_date']
+
 MFSD262
+--
 
 goto
 https://dss.kfintech.com/dssweb/
