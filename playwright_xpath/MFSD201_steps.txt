@@ -1,0 +1,69 @@
+MFSD201
+
+
+
+Click "Procurement Reports"
+.css-n4aafq
+html body div#root div.MuiBox-root.css-79elbk main.MuiBox-root.css-13mcp66 div.MuiContainer-root.MuiContainer-maxWidthLm.css-14o3q1p div.MuiGrid2-root.MuiGrid2-direction-xs-row.div-container.css-1n5khr6 div.MuiBox-root.css-u3awy7 div.MuiGrid2-root.MuiGrid2-container.MuiGrid2-direction-xs-row.css-aaht0h div.MuiGrid2-root.MuiGrid2-direction-xs-row.MuiGrid2-grid-xs-12.MuiGrid2-grid-md-6.css-1l49fvx div.MuiBox-root.css-1g3d0ai div.MuiBox-root.css-n4aafq
+
+
+Click "MFSD201 -Transaction Report"
+ul.MuiList-root:nth-child(1) > a:nth-child(7) > li:nth-child(1) > div:nth-child(1)
+html body div#root div.MuiBox-root.css-79elbk main.MuiBox-root.css-13mcp66 div.MuiContainer-root.MuiContainer-maxWidthLm.css-14o3q1p div.MuiGrid2-root.MuiGrid2-direction-xs-row.div-container.css-1n5khr6 div.MuiBox-root.css-u3awy7 div.MuiGrid2-root.MuiGrid2-container.MuiGrid2-direction-xs-row.css-aaht0h div.MuiGrid2-root.MuiGrid2-direction-xs-row.MuiGrid2-grid-xs-12.MuiGrid2-grid-md-6.css-1l49fvx div.MuiBox-root.css-xnkxbk ul.MuiList-root.MuiList-padding.css-1wduhak a li.MuiListItem-root.MuiListItem-gutters.css-bvovmd div.MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.css-1qm8dkc
+
+
+Click "Select Fund" dropdown
+.css-tti6gq
+html body div#root main.MuiBox-root.css-13mcp66 div.MuiContainer-root.MuiContainer-maxWidthLm.css-14o3q1p div.MuiGrid2-root.MuiGrid2-direction-xs-row.div-container.css-1n5khr6 div.MuiBox-root.css-79elbk div.MuiBox-root.css-0 form div.MuiGrid2-root.MuiGrid2-container.MuiGrid2-direction-xs-row.MuiGrid2-spacing-xs-2.css-dth8uw div.MuiGrid2-root.MuiGrid2-direction-xs-row.MuiGrid2-grid-xs-12.MuiGrid2-grid-md-6.css-tnatjl div.MuiBox-root.css-0 div.MuiFormControl-root.MuiFormControl-fullWidth.css-f1hby7 div.MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-colorPrimary.MuiInputBase-formControl.MuiInputBase-sizeSmall.MuiSelect-root.css-tti6gq
+
+Select First option in dropdown "All Funds"
+#\:raq\: > li:nth-child(1)
+html body div#menu-.MuiPopover-root.MuiMenu-root.MuiModal-root.css-749mnm div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPopover-paper.MuiMenu-paper.css-d1xm6m ul#:raq:.MuiList-root.MuiList-padding.MuiMenu-list.css-ubifyk li.MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-gutters.css-5dycmn
+
+
+Fill "From Date"
+#\:rar\:
+html body div#root main.MuiBox-root.css-13mcp66 div.MuiContainer-root.MuiContainer-maxWidthLm.css-14o3q1p div.MuiGrid2-root.MuiGrid2-direction-xs-row.div-container.css-1n5khr6 div.MuiBox-root.css-79elbk div.MuiBox-root.css-0 form div.MuiGrid2-root.MuiGrid2-container.MuiGrid2-direction-xs-row.MuiGrid2-spacing-xs-2.css-dth8uw div.MuiGrid2-root.MuiGrid2-direction-xs-row.MuiGrid2-grid-xs-12.MuiGrid2-grid-md-6.css-tnatjl div.MuiBox-root.css-1yuhvjn div.MuiBox-root.css-lgk7oi div.MuiBox-root.css-8atqhb div.MuiFormControl-root.MuiFormControl-fullWidth.MuiTextField-root.css-9m12uh div.MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-colorPrimary.MuiInputBase-fullWidth.MuiInputBase-formControl.MuiInputBase-sizeSmall.MuiInputBase-adornedEnd.css-1kmkvia input#:rar:.MuiInputBase-input.MuiOutlinedInput-input.MuiInputBase-inputSizeSmall.MuiInputBase-inputAdornedEnd.css-s43tfo
+
+
+Fill "To Date"
+#\:rau\:
+html body div#root main.MuiBox-root.css-13mcp66 div.MuiContainer-root.MuiContainer-maxWidthLm.css-14o3q1p div.MuiGrid2-root.MuiGrid2-direction-xs-row.div-container.css-1n5khr6 div.MuiBox-root.css-79elbk div.MuiBox-root.css-0 form div.MuiGrid2-root.MuiGrid2-container.MuiGrid2-direction-xs-row.MuiGrid2-spacing-xs-2.css-dth8uw div.MuiGrid2-root.MuiGrid2-direction-xs-row.MuiGrid2-grid-xs-12.MuiGrid2-grid-md-6.css-tnatjl div.MuiBox-root.css-1yuhvjn div.MuiBox-root.css-lgk7oi div.MuiBox-root.css-8atqhb div.MuiFormControl-root.MuiFormControl-fullWidth.MuiTextField-root.css-9m12uh div.MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-colorPrimary.MuiInputBase-fullWidth.MuiInputBase-formControl.MuiInputBase-sizeSmall.MuiInputBase-adornedEnd.css-1kmkvia input#:rau:.MuiInputBase-input.MuiOutlinedInput-input.MuiInputBase-inputSizeSmall.MuiInputBase-inputAdornedEnd.css-s43tfo
+
+
+Under "Load Option", select "Without Split"
+div.css-179dewl:nth-child(2) > label:nth-child(1) > span:nth-child(1) > input:nth-child(1)
+html body div#root main.MuiBox-root.css-13mcp66 div.MuiContainer-root.MuiContainer-maxWidthLm.css-14o3q1p div.MuiGrid2-root.MuiGrid2-direction-xs-row.div-container.css-1n5khr6 div.MuiBox-root.css-79elbk div.MuiBox-root.css-0 form div.MuiGrid2-root.MuiGrid2-container.MuiGrid2-direction-xs-row.MuiGrid2-spacing-xs-2.css-dth8uw div.MuiGrid2-root.MuiGrid2-direction-xs-row.MuiGrid2-grid-xs-12.MuiGrid2-grid-md-6.css-tnatjl div.MuiBox-root.css-0 fieldset.MuiFormControl-root.css-1qk38wv div.MuiFormGroup-root.MuiFormGroup-row.MuiRadioGroup-root.MuiRadioGroup-row.css-bhi5xm div.MuiGrid-root.MuiGrid-container.css-1d3bbye div.MuiBox-root.css-179dewl label.MuiFormControlLabel-root.MuiFormControlLabel-labelPlacementEnd.css-1zvb9s span.MuiButtonBase-root.MuiRadio-root.MuiRadio-colorPrimary.PrivateSwitchBase-root.Mui-checked.css-1lus5t1 input.PrivateSwitchBase-input.css-j8yymo
+
+
+Under "File Format", select "CSV"
+div.MuiBox-root:nth-child(5) > fieldset:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > label:nth-child(1) > span:nth-child(1) > input:nth-child(1)
+html body div#root main.MuiBox-root.css-13mcp66 div.MuiContainer-root.MuiContainer-maxWidthLm.css-14o3q1p div.MuiGrid2-root.MuiGrid2-direction-xs-row.div-container.css-1n5khr6 div.MuiBox-root.css-79elbk div.MuiBox-root.css-0 form div.MuiGrid2-root.MuiGrid2-container.MuiGrid2-direction-xs-row.MuiGrid2-spacing-xs-2.css-dth8uw div.MuiGrid2-root.MuiGrid2-direction-xs-row.MuiGrid2-grid-xs-12.MuiGrid2-grid-md-6.css-tnatjl div.MuiBox-root.css-0 fieldset.MuiFormControl-root.css-1qk38wv div.MuiFormGroup-root.MuiFormGroup-row.MuiRadioGroup-root.MuiRadioGroup-row.css-bhi5xm div.MuiGrid-root.MuiGrid-container.css-1d3bbye div.MuiBox-root.css-zeemq5 label.MuiFormControlLabel-root.MuiFormControlLabel-labelPlacementEnd.css-8z896k span.MuiButtonBase-root.MuiRadio-root.MuiRadio-colorPrimary.PrivateSwitchBase-root.css-14c2a2c input.PrivateSwitchBase-input.css-j8yymo
+
+
+Under fieldset "Email IDs" select all type="checkbox"
+
+
+Fill "Self Extraction Password"
+#\:rb6\:
+html body div#root main.MuiBox-root.css-13mcp66 div.MuiContainer-root.MuiContainer-maxWidthLm.css-14o3q1p div.MuiGrid2-root.MuiGrid2-direction-xs-row.div-container.css-1n5khr6 div.MuiBox-root.css-79elbk div.MuiBox-root.css-0 form div.MuiGrid2-root.MuiGrid2-container.MuiGrid2-direction-xs-row.MuiGrid2-spacing-xs-2.css-dth8uw div.MuiGrid2-root.MuiGrid2-direction-xs-row.MuiGrid2-grid-xs-12.MuiGrid2-grid-md-6.css-tnatjl div.MuiBox-root.css-0 div.MuiGrid2-root.MuiGrid2-container.MuiGrid2-direction-xs-row.css-1dad5m2 div.MuiGrid2-root.MuiGrid2-direction-xs-row.MuiGrid2-grid-xs-12.css-j5005a div.MuiGrid2-root.MuiGrid2-direction-xs-row.css-1n5khr6 div.MuiFormControl-root.MuiFormControl-marginNormal.MuiFormControl-fullWidth.MuiTextField-root.css-98t3eq div.MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-colorPrimary.MuiInputBase-fullWidth.MuiInputBase-formControl.MuiInputBase-sizeSmall.MuiInputBase-adornedEnd.css-1kmkvia input#:rb6:.MuiInputBase-input.MuiOutlinedInput-input.MuiInputBase-inputSizeSmall.MuiInputBase-inputAdornedEnd.css-17d19u4
+
+
+Fill "Self Extraction Confirm Password"
+#\:rb9\:
+html body div#root main.MuiBox-root.css-13mcp66 div.MuiContainer-root.MuiContainer-maxWidthLm.css-14o3q1p div.MuiGrid2-root.MuiGrid2-direction-xs-row.div-container.css-1n5khr6 div.MuiBox-root.css-79elbk div.MuiBox-root.css-0 form div.MuiGrid2-root.MuiGrid2-container.MuiGrid2-direction-xs-row.MuiGrid2-spacing-xs-2.css-dth8uw div.MuiGrid2-root.MuiGrid2-direction-xs-row.MuiGrid2-grid-xs-12.MuiGrid2-grid-md-6.css-tnatjl div.MuiBox-root.css-0 div.MuiGrid2-root.MuiGrid2-container.MuiGrid2-direction-xs-row.css-1dad5m2 div.MuiGrid2-root.MuiGrid2-direction-xs-row.MuiGrid2-grid-xs-12.css-j5005a div.MuiGrid2-root.MuiGrid2-direction-xs-row.css-1n5khr6 div.MuiFormControl-root.MuiFormControl-marginNormal.MuiFormControl-fullWidth.MuiTextField-root.css-98t3eq div.MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-colorPrimary.MuiInputBase-fullWidth.MuiInputBase-formControl.MuiInputBase-sizeSmall.MuiInputBase-adornedEnd.css-1kmkvia input#:rb9:.MuiInputBase-input.MuiOutlinedInput-input.MuiInputBase-inputSizeSmall.MuiInputBase-inputAdornedEnd.css-17d19u4
+
+
+Click "Submit" button
+button.MuiButton-root:nth-child(1)
+html body div#root main.MuiBox-root.css-13mcp66 div.MuiContainer-root.MuiContainer-maxWidthLm.css-14o3q1p div.MuiGrid2-root.MuiGrid2-direction-xs-row.div-container.css-1n5khr6 div.MuiBox-root.css-79elbk div.MuiBox-root.css-0 form div.MuiBox-root.css-ikdm5r button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.MuiButton-colorPrimary.button.css-iafu2n
+
+
+Get the text from here
+p.MuiTypography-alignJustify:nth-child(1)
+html body div#root main.MuiBox-root.css-13mcp66 div.MuiContainer-root.MuiContainer-maxWidthLm.css-14o3q1p div.MuiGrid2-root.MuiGrid2-direction-xs-row.div-container.css-1n5khr6 div.MuiBox-root.css-79elbk div.MuiBox-root.css-0 form div.MuiBox-root.css-t0051x div.MuiBox-root.css-178yklu p.MuiTypography-root.MuiTypography-body1.MuiTypography-alignJustify.MuiTypography-paragraph.css-1edtysl
+
+
+
+
+
