@@ -85,6 +85,7 @@ close popup banner if existing
 
 click "Mail Back Reports"
 a.MuiListItem-root:nth-child(3)
+html body div#root div.MuiBox-root.css-k008qs div.MuiDrawer-root.MuiDrawer-anchorLeft.MuiDrawer-docked.css-1n38jtp div.MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation0.MuiDrawer-paper.MuiDrawer-paperAnchorLeft.MuiDrawer-paperAnchorDockedLeft.css-mdxzat div.MuiBox-root.css-jjka3e ul.MuiList-root.css-11fhglq a.MuiListItem-root.MuiListItem-gutters.MuiListItem-padding.css-p488g4
 
 
 
