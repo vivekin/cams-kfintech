@@ -4,6 +4,7 @@ import logging
 import re
 import requests
 import base64
+import sys
 from PIL import Image
 import io
 import configparser
@@ -13,6 +14,11 @@ from dateutil.relativedelta import relativedelta
 
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
 from ocrapi import solve_captcha
+
+print(sys.argv)
+record_type = sys.argv[1]
+browser_type = sys.argv[2]
+
 
 MAX_ATTEMPTS=10
 URL = "https://dss.kfintech.com/dssweb/"
@@ -58,6 +64,7 @@ def try_login(page, usern, password):
 
         page.click('button:has-text("Sign In")')
 
+        page.wait_for_timeout(500)
         # If a snackbar appears, the login failed -> retry
         try:
             page.wait_for_selector(".MuiSnackbar-root", state="visible", timeout=3000)
@@ -148,13 +155,14 @@ def main():
     datetime_object = datetime.now()
     formatted_datetime = datetime_object.strftime("%Y_%m_%dT%H_%M_%S")
     logging.basicConfig(
-        filename=f"kfintech_playwright_test_{formatted_datetime}.log",  # Specify the log file name
+        filename=f"kfintech_playwright_{record_type}_{formatted_datetime}.log",  # Specify the log file name
         level=logging.INFO,  # Set the logging level to INFO
         format="%(asctime)s - %(levelname)s - %(message)s",  # Define the log message format
     )
     
     start_time = time.perf_counter()
     logging.info(f"START - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - v.12")
+    logging.info(f"Arguments - browser_type: {browser_type}, record_type: {record_type}")
     
     today = date.today()
     logging.info(f"Today's date: {formatted_datetime}")
@@ -170,18 +178,16 @@ def main():
         for row in userreader:
             userlist.append((row[0], row[1], row[2]))
             status[row[0]]='-'
-    # print(userlist)
     
     user_count = len(userlist)
     with sync_playwright() as p:
-        browser = p.firefox.launch(headless=False)
-        # browser = p.chromium.launch(headless=False)
+        browser = p.firefox.launch(headless=False) if browser_type=="firefox" else p.chromium.launch(headless=False)
         context = browser.new_context()
         page = context.new_page()
-        page.on("response", lambda r: r.status >= 400 and
-        print(f"[{r.status}] {r.request.method} {r.url}"))
-        page.on("request", lambda r: r.url == URL and print(r.headers))
-        page.on("requestfailed", lambda r: print("FAILED", r.url, r.failure))
+        # page.on("response", lambda r: r.status >= 400 and
+        # print(f"[{r.status}] {r.request.method} {r.url}"))
+        # page.on("request", lambda r: r.url == URL and print(r.headers))
+        # page.on("requestfailed", lambda r: print("FAILED", r.url, r.failure))
 
         # Process each user
         for user in userlist:
@@ -200,10 +206,20 @@ def main():
 
                 mailback = page.locator(".MuiDrawer-root").get_by_role("link", name="Mail Back Reports")
                 mailback.click()
-                
-                result=download_MFSD201_report(page, config, user[2])
-                kf=re.search(r"reference number (\w+)", result)
-                status[user[0]]=kf.group(1)
+
+                match record_type:
+                    case "MFSD201":
+                        result=download_MFSD201_report(page, config, user[2])
+                        kf=re.search(r"reference number (\w+)", result)
+                        status[user[0]]=kf.group(1)
+                    case "MFSD205":
+                        pass
+                    case "MFSD211":
+                        pass
+                    case "MFSD230":
+                        pass
+                    case "MFSD262":
+                        pass
                 page.wait_for_timeout(2000)
                 logout(page)
  
