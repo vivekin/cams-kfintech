@@ -1,0 +1,410 @@
+[
+  {
+    "element": "<mat-icon _ngcontent-camsonline-server-c287=\"\" role=\"img\" mat-button=\"\" class=\"mat-icon notranslate material-icons close-popup closeicon mat-icon-no-color\" aria-hidden=\"true\" data-mat-icon-type=\"font\"",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback",
+    "strategy": "text",
+    "locator": "page.get_by_text('close', exact=True)"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c304=\"\" type=\"text\" maxlength=\"128\" appinputrestriction=\"email\" matinput=\"\" autofocus=\"\" autocomplete=\"off\" formcontrolname=\"email\" placeholder=\"Email\" lowercase=\"l",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback",
+    "strategy": "placeholder",
+    "locator": "page.get_by_placeholder('Email', exact=True)"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c304=\"\" type=\"text\" maxlength=\"128\" appinputrestriction=\"email\" matinput=\"\" autofocus=\"\" autocomplete=\"off\" formcontrolname=\"email\" placeholder=\"Email\" lowercase=\"l",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback",
+    "strategy": "placeholder",
+    "locator": "page.get_by_placeholder('Email', exact=True)"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c304=\"\" type=\"text\" maxlength=\"128\" appinputrestriction=\"email\" matinput=\"\" autofocus=\"\" autocomplete=\"off\" formcontrolname=\"email\" placeholder=\"Email\" lowercase=\"l",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback",
+    "strategy": "placeholder",
+    "locator": "page.get_by_placeholder('Email', exact=True)"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c304=\"\" type=\"Submit\" value=\"Submit\" appprevtdblclick=\"\" class=\"check-now-btn mr-right\" data-pw-picked=\"1\">",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback",
+    "strategy": "role",
+    "locator": "page.get_by_role('button', name='Submit', exact=True)"
+  },
+  {
+    "element": "<mat-select _ngcontent-camsonline-server-c307=\"\" role=\"combobox\" aria-autocomplete=\"none\" aria-haspopup=\"true\" placeholder=\"Mutual Fund\" multiple=\"\" formcontrolname=\"amcnameup\" class=\"mat-select ng-tn",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR1",
+    "strategy": "role",
+    "locator": "page.get_by_role('combobox', name='Mutual Fund', exact=True)"
+  },
+  {
+    "element": "<div role=\"listbox\" tabindex=\"-1\" class=\"ng-tns-c172-8 ng-trigger ng-trigger-transformPanel mat-select-panel mat-primary\" id=\"mat-select-4-panel\" aria-multiselectable=\"true\" data-pw-picked=\"1\" style=\"",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR1",
+    "strategy": "css",
+    "locator": "page.locator('#mat-select-4-panel')"
+  },
+  {
+    "element": "<div role=\"tab\" mattablabelwrapper=\"\" mat-ripple=\"\" cdkmonitorelementfocus=\"\" class=\"mat-ripple mat-tab-label mat-focus-indicator ng-star-inserted cdk-focused cdk-mouse-focused\" id=\"mat-tab-label-0-1\"",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR1",
+    "strategy": "role",
+    "locator": "page.get_by_role('tab', name='Customer Services', exact=True)"
+  },
+  {
+    "element": "<li _ngcontent-camsonline-server-c307=\"\" class=\"csp-class-4 ng-star-inserted\" data-pw-picked=\"1\"> WBR2. Investor Transactions for a Period <mat-icon _ngcontent-camsonline-server-c307=\"\" role=\"img\" cla",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR2",
+    "strategy": "text",
+    "locator": "page.get_by_text('WBR2. Investor Transactions for a Period chevron_right', exact=True)"
+  },
+  {
+    "element": "<mat-select _ngcontent-camsonline-server-c307=\"\" role=\"combobox\" aria-autocomplete=\"none\" aria-haspopup=\"true\" formcontrolname=\"outputformat\" class=\"mat-select ng-tns-c172-19 ng-tns-c108-18 ng-untouch",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR2",
+    "strategy": "role",
+    "locator": "page.get_by_role('combobox', name='DBF', exact=True)"
+  },
+  {
+    "element": "<mat-option _ngcontent-camsonline-server-c307=\"\" role=\"option\" class=\"mat-option mat-focus-indicator ng-tns-c172-19 ng-star-inserted\" id=\"mat-option-126\" tabindex=\"0\" aria-disabled=\"false\" style=\"\" da",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR2",
+    "strategy": "role",
+    "locator": "page.get_by_role('option', name='Excel With Headers', exact=True)"
+  },
+  {
+    "element": "<mat-select _ngcontent-camsonline-server-c307=\"\" role=\"combobox\" aria-autocomplete=\"none\" aria-haspopup=\"true\" name=\"format\" formcontrolname=\"deliveryopt\" class=\"mat-select ng-tns-c172-21 ng-tns-c108-",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR2",
+    "strategy": "role",
+    "locator": "page.get_by_role('combobox', name='Email an encrypted attachment', exact=True)"
+  },
+  {
+    "element": "<mat-option _ngcontent-camsonline-server-c307=\"\" role=\"option\" class=\"mat-option mat-focus-indicator ng-tns-c172-21 ng-star-inserted\" id=\"mat-option-128\" tabindex=\"0\" aria-disabled=\"false\" style=\"\" da",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR2",
+    "strategy": "role",
+    "locator": "page.get_by_role('option', name='Email a download link', exact=True)"
+  },
+  {
+    "element": "<div class=\"mat-form-field-infix ng-tns-c108-26\" data-pw-picked=\"1\"><mat-select _ngcontent-camsonline-server-c307=\"\" role=\"combobox\" aria-autocomplete=\"none\" aria-haspopup=\"true\" placeholder=\"Transact",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR2",
+    "strategy": "css (fallback)",
+    "locator": "page.locator('body > app-root > div > app-reports > div > div:nth-of-type(2) > div > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(2) > form > div > div > div:nth-of-type(32) > div > mat-form-field > div > div:nth-of-type(1) > div:nth-of-type(3)')"
+  },
+  {
+    "element": "<div class=\"cdk-overlay-backdrop cdk-overlay-transparent-backdrop cdk-overlay-backdrop-showing\" data-pw-picked=\"1\"></div>",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR2",
+    "strategy": "css (fallback)",
+    "locator": "page.locator('body > div:nth-of-type(2) > div:nth-of-type(1)')"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c307=\"\" matinput=\"\" formcontrolname=\"from_date\" readonly=\"true\" autocomplete=\"off\" placeholder=\"From Date\" class=\"mat-input-element mat-form-field-autofill-control ",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR2",
+    "strategy": "placeholder",
+    "locator": "page.get_by_placeholder('From Date', exact=True)"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c307=\"\" matinput=\"\" formcontrolname=\"to_date\" readonly=\"true\" autocomplete=\"off\" placeholder=\"To Date\" class=\"mat-input-element mat-form-field-autofill-control mat-",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR2",
+    "strategy": "placeholder",
+    "locator": "page.get_by_placeholder('To Date', exact=True)"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c307=\"\" type=\"submit\" value=\"Next\" appprevtdblclick=\"\" class=\"check-now-btn ng-star-inserted\" data-pw-picked=\"1\">",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR2",
+    "strategy": "role",
+    "locator": "page.get_by_role('button', name='Next', exact=True)"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c307=\"\" id=\"password\" name=\"password\" matinput=\"\" appblockcopypaste=\"\" placeholder=\"Enter Password\" formcontrolname=\"pwd1\" autocomplete=\"new-password\" appinputrestr",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR2",
+    "strategy": "css",
+    "locator": "page.locator('#password')"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c307=\"\" id=\"confirmPassword\" name=\"contact\" maxlength=\"15\" minlength=\"6\" matinput=\"\" appblockcopypaste=\"\" placeholder=\"Enter Password\" formcontrolname=\"pwd2\" appinp",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR2",
+    "strategy": "css",
+    "locator": "page.locator('#confirmPassword')"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c307=\"\" type=\"Submit\" appprevtdblclick=\"\" value=\"IMMEDIATE\" class=\"check-now-btn mr-right\" data-pw-picked=\"1\">",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR2",
+    "strategy": "role",
+    "locator": "page.get_by_role('button', name='IMMEDIATE', exact=True)"
+  },
+  {
+    "element": "<div role=\"tab\" mattablabelwrapper=\"\" mat-ripple=\"\" cdkmonitorelementfocus=\"\" class=\"mat-ripple mat-tab-label mat-focus-indicator ng-star-inserted cdk-focused cdk-mouse-focused\" id=\"mat-tab-label-0-2\"",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR6",
+    "strategy": "role",
+    "locator": "page.get_by_role('tab', name='Your earnings', exact=True)"
+  },
+  {
+    "element": "<div role=\"tab\" mattablabelwrapper=\"\" mat-ripple=\"\" cdkmonitorelementfocus=\"\" class=\"mat-ripple mat-tab-label mat-focus-indicator ng-star-inserted cdk-focused cdk-mouse-focused\" id=\"mat-tab-label-0-3\"",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR9",
+    "strategy": "role",
+    "locator": "page.get_by_role('tab', name='Proprietary data', exact=True)"
+  },
+  {
+    "element": "<li _ngcontent-camsonline-server-c307=\"\" class=\"csp-class-4 Report_Active ng-star-inserted\" data-pw-picked=\"1\"> WBR9. Investor Static details feed - CRMS Format <mat-icon _ngcontent-camsonline-server-",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR9",
+    "strategy": "css (fallback)",
+    "locator": "page.locator('body > app-root > div > app-reports > div > div:nth-of-type(2) > div > div:nth-of-type(3) > div:nth-of-type(1) > ul > li:nth-of-type(1)')"
+  },
+  {
+    "element": "<div class=\"mat-form-field-infix ng-tns-c108-35\" data-pw-picked=\"1\"><mat-select _ngcontent-camsonline-server-c307=\"\" role=\"combobox\" aria-autocomplete=\"none\" aria-haspopup=\"true\" formcontrolname=\"outp",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR9",
+    "strategy": "css (fallback)",
+    "locator": "page.locator('body > app-root > div > app-reports > div > div:nth-of-type(2) > div > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(2) > form > div > div > div:nth-of-type(3) > div:nth-of-type(1) > mat-form-field > div > div:nth-of-type(1) > div:nth-of-type(3)')"
+  },
+  {
+    "element": "<mat-option _ngcontent-camsonline-server-c307=\"\" role=\"option\" class=\"mat-option mat-focus-indicator ng-tns-c172-36 ng-star-inserted\" id=\"mat-option-188\" tabindex=\"0\" aria-disabled=\"false\" style=\"\" da",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR9",
+    "strategy": "role",
+    "locator": "page.get_by_role('option', name='Excel With Headers', exact=True)"
+  },
+  {
+    "element": "<mat-select _ngcontent-camsonline-server-c307=\"\" role=\"combobox\" aria-autocomplete=\"none\" aria-haspopup=\"true\" name=\"format\" formcontrolname=\"deliveryopt\" class=\"mat-select ng-tns-c172-38 ng-tns-c108-",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR9",
+    "strategy": "role",
+    "locator": "page.get_by_role('combobox', name='Email an encrypted attachment', exact=True)"
+  },
+  {
+    "element": "<mat-option _ngcontent-camsonline-server-c307=\"\" role=\"option\" class=\"mat-option mat-focus-indicator ng-tns-c172-38 ng-star-inserted\" id=\"mat-option-190\" tabindex=\"0\" aria-disabled=\"false\" style=\"\" da",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR9",
+    "strategy": "role",
+    "locator": "page.get_by_role('option', name='Email a download link', exact=True)"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c307=\"\" matinput=\"\" formcontrolname=\"from_date\" readonly=\"true\" autocomplete=\"off\" placeholder=\"From Date\" class=\"mat-input-element mat-form-field-autofill-control ",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR9",
+    "strategy": "placeholder",
+    "locator": "page.get_by_placeholder('From Date', exact=True)"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c307=\"\" matinput=\"\" formcontrolname=\"to_date\" readonly=\"true\" autocomplete=\"off\" placeholder=\"To Date\" class=\"mat-input-element mat-form-field-autofill-control mat-",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR9",
+    "strategy": "placeholder",
+    "locator": "page.get_by_placeholder('To Date', exact=True)"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c307=\"\" type=\"submit\" value=\"Next\" appprevtdblclick=\"\" class=\"check-now-btn ng-star-inserted\" data-pw-picked=\"1\">",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR9",
+    "strategy": "role",
+    "locator": "page.get_by_role('button', name='Next', exact=True)"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c307=\"\" id=\"password\" name=\"password\" matinput=\"\" appblockcopypaste=\"\" placeholder=\"Enter Password\" formcontrolname=\"pwd1\" autocomplete=\"new-password\" appinputrestr",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR9",
+    "strategy": "css",
+    "locator": "page.locator('#password')"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c307=\"\" id=\"confirmPassword\" name=\"contact\" maxlength=\"15\" minlength=\"6\" matinput=\"\" appblockcopypaste=\"\" placeholder=\"Enter Password\" formcontrolname=\"pwd2\" appinp",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR9",
+    "strategy": "css",
+    "locator": "page.locator('#confirmPassword')"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c307=\"\" type=\"Submit\" appprevtdblclick=\"\" value=\"IMMEDIATE\" class=\"check-now-btn mr-right\" data-pw-picked=\"1\">",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR9",
+    "strategy": "role",
+    "locator": "page.get_by_role('button', name='IMMEDIATE', exact=True)"
+  },
+  {
+    "element": "<div role=\"tab\" mattablabelwrapper=\"\" mat-ripple=\"\" cdkmonitorelementfocus=\"\" class=\"mat-ripple mat-tab-label mat-focus-indicator ng-star-inserted cdk-focused cdk-mouse-focused\" id=\"mat-tab-label-0-4\"",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR3",
+    "strategy": "role",
+    "locator": "page.get_by_role('tab', name='Grow your Business', exact=True)"
+  },
+  {
+    "element": "<li _ngcontent-camsonline-server-c307=\"\" class=\"csp-class-4 ng-star-inserted\" data-pw-picked=\"1\"> WBR49. SIP/STP procured for the period <mat-icon _ngcontent-camsonline-server-c307=\"\" role=\"img\" class",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR49",
+    "strategy": "text",
+    "locator": "page.get_by_text('WBR49. SIP/STP procured for the period chevron_right', exact=True)"
+  },
+  {
+    "element": "<div class=\"mat-form-field-infix ng-tns-c108-73\" data-pw-picked=\"1\"><mat-select _ngcontent-camsonline-server-c307=\"\" role=\"combobox\" aria-autocomplete=\"none\" aria-haspopup=\"true\" formcontrolname=\"outp",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR49",
+    "strategy": "css (fallback)",
+    "locator": "page.locator('body > app-root > div > app-reports > div > div:nth-of-type(2) > div > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(2) > form > div > div > div:nth-of-type(3) > div:nth-of-type(1) > mat-form-field > div > div:nth-of-type(1) > div:nth-of-type(3)')"
+  },
+  {
+    "element": "<mat-option _ngcontent-camsonline-server-c307=\"\" role=\"option\" class=\"mat-option mat-focus-indicator ng-tns-c172-74 ng-star-inserted\" id=\"mat-option-225\" tabindex=\"0\" aria-disabled=\"false\" style=\"\" da",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR49",
+    "strategy": "role",
+    "locator": "page.get_by_role('option', name='Excel With Headers', exact=True)"
+  },
+  {
+    "element": "<mat-select _ngcontent-camsonline-server-c307=\"\" role=\"combobox\" aria-autocomplete=\"none\" aria-haspopup=\"true\" name=\"format\" formcontrolname=\"deliveryopt\" class=\"mat-select ng-tns-c172-76 ng-tns-c108-",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR49",
+    "strategy": "role",
+    "locator": "page.get_by_role('combobox', name='Email an encrypted attachment', exact=True)"
+  },
+  {
+    "element": "<mat-option _ngcontent-camsonline-server-c307=\"\" role=\"option\" class=\"mat-option mat-focus-indicator ng-tns-c172-76 ng-star-inserted\" id=\"mat-option-214\" tabindex=\"0\" aria-disabled=\"false\" style=\"\" da",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR49",
+    "strategy": "role",
+    "locator": "page.get_by_role('option', name='Email a download link', exact=True)"
+  },
+  {
+    "element": "<div class=\"mat-form-field-infix ng-tns-c108-78\" data-pw-picked=\"1\"><input _ngcontent-camsonline-server-c307=\"\" matinput=\"\" formcontrolname=\"from_date\" readonly=\"true\" autocomplete=\"off\" placeholder=\"",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR49",
+    "strategy": "css (fallback)",
+    "locator": "page.locator('body > app-root > div > app-reports > div > div:nth-of-type(2) > div > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(2) > form > div > div > div:nth-of-type(34) > div > div:nth-of-type(1) > div:nth-of-type(1) > mat-form-field > div > div:nth-of-type(1) > div:nth-of-type(3)')"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c307=\"\" matinput=\"\" formcontrolname=\"to_date\" readonly=\"true\" autocomplete=\"off\" placeholder=\"To Date\" class=\"mat-input-element mat-form-field-autofill-control mat-",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR49",
+    "strategy": "placeholder",
+    "locator": "page.get_by_placeholder('To Date', exact=True)"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c307=\"\" type=\"submit\" value=\"Next\" appprevtdblclick=\"\" class=\"check-now-btn ng-star-inserted\" data-pw-picked=\"1\">",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR49",
+    "strategy": "role",
+    "locator": "page.get_by_role('button', name='Next', exact=True)"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c307=\"\" id=\"password\" name=\"password\" matinput=\"\" appblockcopypaste=\"\" placeholder=\"Enter Password\" formcontrolname=\"pwd1\" autocomplete=\"new-password\" appinputrestr",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR49",
+    "strategy": "css",
+    "locator": "page.locator('#password')"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c307=\"\" id=\"confirmPassword\" name=\"contact\" maxlength=\"15\" minlength=\"6\" matinput=\"\" appblockcopypaste=\"\" placeholder=\"Enter Password\" formcontrolname=\"pwd2\" appinp",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR49",
+    "strategy": "css",
+    "locator": "page.locator('#confirmPassword')"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c307=\"\" type=\"Submit\" appprevtdblclick=\"\" value=\"IMMEDIATE\" class=\"check-now-btn mr-right\" data-pw-picked=\"1\">",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR49",
+    "strategy": "role",
+    "locator": "page.get_by_role('button', name='IMMEDIATE', exact=True)"
+  },
+  {
+    "element": "<div role=\"tab\" mattablabelwrapper=\"\" mat-ripple=\"\" cdkmonitorelementfocus=\"\" class=\"mat-ripple mat-tab-label mat-focus-indicator ng-star-inserted cdk-focused cdk-mouse-focused\" id=\"mat-tab-label-0-5\"",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/IR1",
+    "strategy": "role",
+    "locator": "page.get_by_role('tab', name='GST Invoice Management', exact=True)"
+  },
+  {
+    "element": "<div role=\"tab\" mattablabelwrapper=\"\" mat-ripple=\"\" cdkmonitorelementfocus=\"\" class=\"mat-ripple mat-tab-label mat-focus-indicator ng-star-inserted cdk-focused cdk-mouse-focused\" id=\"mat-tab-label-0-2\"",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR6",
+    "strategy": "role",
+    "locator": "page.get_by_role('tab', name='Your earnings', exact=True)"
+  },
+  {
+    "element": "<li _ngcontent-camsonline-server-c307=\"\" class=\"csp-class-4 ng-star-inserted\" data-pw-picked=\"1\"> WBR77. Consolidated Brokerage Payout Details <mat-icon _ngcontent-camsonline-server-c307=\"\" role=\"img\"",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR77",
+    "strategy": "text",
+    "locator": "page.get_by_text('WBR77. Consolidated Brokerage Payout Details chevron_right', exact=True)"
+  },
+  {
+    "element": "<mat-select _ngcontent-camsonline-server-c307=\"\" role=\"combobox\" aria-autocomplete=\"none\" aria-haspopup=\"true\" formcontrolname=\"outputformat\" class=\"mat-select ng-tns-c172-87 ng-tns-c108-86 ng-untouch",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR77",
+    "strategy": "role",
+    "locator": "page.get_by_role('combobox', name='DBF', exact=True)"
+  },
+  {
+    "element": "<mat-option _ngcontent-camsonline-server-c307=\"\" role=\"option\" class=\"mat-option mat-focus-indicator ng-tns-c172-87 ng-star-inserted\" id=\"mat-option-273\" tabindex=\"0\" aria-disabled=\"false\" style=\"\" da",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR77",
+    "strategy": "role",
+    "locator": "page.get_by_role('option', name='Excel With Headers', exact=True)"
+  },
+  {
+    "element": "<div class=\"mat-form-field-infix ng-tns-c108-88\" data-pw-picked=\"1\"><mat-select _ngcontent-camsonline-server-c307=\"\" role=\"combobox\" aria-autocomplete=\"none\" aria-haspopup=\"true\" name=\"format\" formcon",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR77",
+    "strategy": "css (fallback)",
+    "locator": "page.locator('body > app-root > div > app-reports > div > div:nth-of-type(2) > div > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(2) > form > div > div > div:nth-of-type(3) > div:nth-of-type(2) > mat-form-field > div > div:nth-of-type(1) > div:nth-of-type(3)')"
+  },
+  {
+    "element": "<mat-option _ngcontent-camsonline-server-c307=\"\" role=\"option\" class=\"mat-option mat-focus-indicator ng-tns-c172-89 ng-star-inserted\" id=\"mat-option-275\" tabindex=\"0\" aria-disabled=\"false\" style=\"\" da",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR77",
+    "strategy": "role",
+    "locator": "page.get_by_role('option', name='Email a download link', exact=True)"
+  },
+  {
+    "element": "<input type=\"checkbox\" class=\"mat-checkbox-input cdk-visually-hidden\" id=\"mat-checkbox-12-input\" tabindex=\"0\" aria-checked=\"false\" data-pw-picked=\"1\">",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR77",
+    "strategy": "role",
+    "locator": "page.get_by_role('checkbox', name='All', exact=True)"
+  },
+  {
+    "element": "<label class=\"mat-checkbox-layout\" for=\"mat-checkbox-12-input\" data-pw-picked=\"1\"><span class=\"mat-checkbox-inner-container\"><input type=\"checkbox\" class=\"mat-checkbox-input cdk-visually-hidden\" id=\"m",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR77",
+    "strategy": "none",
+    "locator": null
+  },
+  {
+    "element": "<div class=\"mat-form-field-infix ng-tns-c108-96\" data-pw-picked=\"1\"><mat-select _ngcontent-camsonline-server-c307=\"\" role=\"combobox\" aria-autocomplete=\"none\" aria-haspopup=\"true\" placeholder=\"Month-Ye",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR77",
+    "strategy": "css (fallback)",
+    "locator": "page.locator('body > app-root > div > app-reports > div > div:nth-of-type(2) > div > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(2) > form > div > div > div:nth-of-type(34) > div > mat-form-field > div > div:nth-of-type(1) > div:nth-of-type(3)')"
+  },
+  {
+    "element": "<mat-option _ngcontent-camsonline-server-c307=\"\" role=\"option\" class=\"mat-option mat-focus-indicator mat-selected mat-active ng-tns-c172-97 ng-star-inserted\" id=\"mat-option-276\" tabindex=\"0\" aria-disa",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR77",
+    "strategy": "role",
+    "locator": "page.get_by_role('option', name='Nov-2026', exact=True)"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c307=\"\" type=\"submit\" value=\"Next\" appprevtdblclick=\"\" class=\"check-now-btn ng-star-inserted\" data-pw-picked=\"1\">",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR77",
+    "strategy": "role",
+    "locator": "page.get_by_role('button', name='Next', exact=True)"
+  },
+  {
+    "element": "<div class=\"mat-form-field-infix ng-tns-c108-98\" data-pw-picked=\"1\"><input _ngcontent-camsonline-server-c307=\"\" id=\"password\" name=\"password\" matinput=\"\" appblockcopypaste=\"\" placeholder=\"Enter Passwo",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR77",
+    "strategy": "css (fallback)",
+    "locator": "page.locator('body > app-root > div > app-reports > div > div:nth-of-type(2) > div > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(3) > div > div > form > div > div > div:nth-of-type(8) > div:nth-of-type(1) > mat-form-field > div > div:nth-of-type(1) > div:nth-of-type(3)')"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c307=\"\" id=\"password\" name=\"password\" matinput=\"\" appblockcopypaste=\"\" placeholder=\"Enter Password\" formcontrolname=\"pwd1\" autocomplete=\"new-password\" appinputrestr",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR77",
+    "strategy": "css",
+    "locator": "page.locator('#password')"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c307=\"\" id=\"confirmPassword\" name=\"contact\" maxlength=\"15\" minlength=\"6\" matinput=\"\" appblockcopypaste=\"\" placeholder=\"Enter Password\" formcontrolname=\"pwd2\" appinp",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR77",
+    "strategy": "css",
+    "locator": "page.locator('#confirmPassword')"
+  },
+  {
+    "element": "<input _ngcontent-camsonline-server-c307=\"\" type=\"Submit\" appprevtdblclick=\"\" value=\"IMMEDIATE\" class=\"check-now-btn mr-right\" data-pw-picked=\"1\">",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR77",
+    "strategy": "role",
+    "locator": "page.get_by_role('button', name='IMMEDIATE', exact=True)"
+  },
+  {
+    "element": "<div role=\"tab\" mattablabelwrapper=\"\" mat-ripple=\"\" cdkmonitorelementfocus=\"\" class=\"mat-ripple mat-tab-label mat-focus-indicator ng-star-inserted cdk-focused cdk-mouse-focused\" id=\"mat-tab-label-0-3\"",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR9",
+    "strategy": "role",
+    "locator": "page.get_by_role('tab', name='Proprietary data', exact=True)"
+  },
+  {
+    "element": "<li _ngcontent-camsonline-server-c307=\"\" class=\"csp-class-4 Report_Active ng-star-inserted\" data-pw-picked=\"1\"> WBR9. Investor Static details feed - CRMS Format <mat-icon _ngcontent-camsonline-server-",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR9",
+    "strategy": "css (fallback)",
+    "locator": "page.locator('body > app-root > div > app-reports > div > div:nth-of-type(2) > div > div:nth-of-type(3) > div:nth-of-type(1) > ul > li:nth-of-type(1)')"
+  },
+  {
+    "element": "<h4 _ngcontent-camsonline-server-c307=\"\" data-pw-picked=\"1\"><b _ngcontent-camsonline-server-c307=\"\" class=\"t-inner-head\">Distributor reports</b><a _ngcontent-camsonline-server-c307=\"\" href=\"./assets/P",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR9",
+    "strategy": "css (fallback)",
+    "locator": "page.locator('body > app-root > div > app-reports > div > div:nth-of-type(2) > div > div:nth-of-type(3) > div:nth-of-type(1) > h4')"
+  },
+  {
+    "element": "<li _ngcontent-camsonline-server-c307=\"\" class=\"csp-class-4 ng-star-inserted\" data-pw-picked=\"1\"> WBR9A. Investor Static details - Merger <mat-icon _ngcontent-camsonline-server-c307=\"\" role=\"img\" clas",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR9A",
+    "strategy": "text",
+    "locator": "page.get_by_text('WBR9A. Investor Static details - Merger chevron_right', exact=True)"
+  },
+  {
+    "element": "<li _ngcontent-camsonline-server-c307=\"\" class=\"csp-class-4 ng-star-inserted\" data-pw-picked=\"1\"> WBR9. Investor Static details feed - CRMS Format <mat-icon _ngcontent-camsonline-server-c307=\"\" role=\"",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback/WBR9",
+    "strategy": "css (fallback)",
+    "locator": "page.locator('body > app-root > div > app-reports > div > div:nth-of-type(2) > div > div:nth-of-type(3) > div:nth-of-type(1) > ul > li:nth-of-type(1)')"
+  },
+  {
+    "element": "<mat-icon _ngcontent-camsonline-server-c307=\"\" role=\"img\" class=\"mat-icon notranslate logout material-icons mat-icon-no-color\" aria-hidden=\"true\" data-mat-icon-type=\"font\" data-pw-picked=\"1\"> power_se",
+    "frame_url": "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback",
+    "strategy": "none",
+    "locator": null
+  }
+]
