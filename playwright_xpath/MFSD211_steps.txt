@@ -1,5 +1,12 @@
 MFSD211
 
+Click "Procurement Reports"
+.css-n4aafq
+html body div#root div.MuiBox-root.css-79elbk main.MuiBox-root.css-13mcp66 div.MuiContainer-root.MuiContainer-maxWidthLm.css-14o3q1p div.MuiGrid2-root.MuiGrid2-direction-xs-row.div-container.css-1n5khr6 div.MuiBox-root.css-u3awy7 div.MuiGrid2-root.MuiGrid2-container.MuiGrid2-direction-xs-row.css-aaht0h div.MuiGrid2-root.MuiGrid2-direction-xs-row.MuiGrid2-grid-xs-12.MuiGrid2-grid-md-6.css-1l49fvx div.MuiBox-root.css-1g3d0ai div.MuiBox-root.css-n4aafq
+
+Click "MFSD211-Investor Master Information"
+ul.MuiList-root:nth-child(1) > a:nth-child(1) > li:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > span:nth-child(1)
+html body div#root div.MuiBox-root.css-79elbk main.MuiBox-root.css-13mcp66 div.MuiContainer-root.MuiContainer-maxWidthLm.css-14o3q1p div.MuiGrid2-root.MuiGrid2-direction-xs-row.div-container.css-1n5khr6 div.MuiBox-root.css-u3awy7 div.MuiGrid2-root.MuiGrid2-container.MuiGrid2-direction-xs-row.css-aaht0h div.MuiGrid2-root.MuiGrid2-direction-xs-row.MuiGrid2-grid-xs-12.MuiGrid2-grid-md-6.css-1l49fvx div.MuiBox-root.css-xnkxbk ul.MuiList-root.MuiList-padding.css-1wduhak a li.MuiListItem-root.MuiListItem-gutters.css-bvovmd div.MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.css-1qm8dkc div.MuiBox-root.css-k008qs div.MuiListItemText-root.css-gv608b span.MuiTypography-root.MuiTypography-body1.MuiListItemText-primary.css-fyswvn
 
 
 Click "Select Fund" dropdown
