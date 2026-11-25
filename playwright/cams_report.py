@@ -2,11 +2,16 @@ import csv
 import time
 import logging
 import re
+import sys
 import configparser
 from datetime import date, datetime
 from dateutil.relativedelta import relativedelta
 
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
+
+print(sys.argv)
+record_type = sys.argv[1]
+browser_type = sys.argv[2]
 
 URL = "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback"
 
@@ -52,7 +57,18 @@ def try_login(page, email):
         page.click(SUBMIT_BTN)
         print("Clicked submit")
 
-  
+def download_WBR2_report(page, config, extpass):
+    pass
+
+def download_WBR9_report(page, config, extpass):
+    pass
+
+def download_WBR49_report(page, config, extpass):
+    pass
+
+def download_WBR77_report(page, config, extpass):
+    pass
+
 def main():
     print("Script running ...")
 
@@ -65,13 +81,14 @@ def main():
     datetime_object = datetime.now()
     formatted_datetime = datetime_object.strftime("%Y_%m_%dT%H_%M_%S")
     logging.basicConfig(
-        filename=f"cams_playwright_test_{formatted_datetime}.log",  # Specify the log file name
+        filename=f"cams_report_{record_type}_{formatted_datetime}.log",  # Specify the log file name
         level=logging.INFO,  # Set the logging level to INFO
         format="%(asctime)s - %(levelname)s - %(message)s",  # Define the log message format
     )
     
     start_time = time.perf_counter()
     logging.info(f"START - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - v.12")
+    logging.info(f"Arguments - browser_type: {browser_type}, record_type: {record_type}")
     
     today = date.today()
     logging.info(f"Today's date: {formatted_datetime}")
@@ -108,6 +125,16 @@ def main():
                 try_login(page, user[0])
                             
                 page.wait_for_timeout(3000)
+                match record_type:
+                    case "WBR2":
+                        result=download_WBR2_report(page, config, user[1])
+                    case "WBR9":
+                        result=download_WBR9_report(page, config, user[1])
+                    case "WBR49":
+                        result=download_WBR49_report(page, config, user[1])
+                    case "WBR77":
+                        result=download_WBR77_report(page, config, user[1])
+
                 # Click logout
                 page.click(LOGOUT_ICON)
                 print("Clicked logout")
