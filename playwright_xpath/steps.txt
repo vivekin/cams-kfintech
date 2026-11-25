@@ -1,4 +1,9 @@
 CAMS
+WBR2
+WBR9
+WBR49
+WBR77
+
 goto
 https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback
 
@@ -28,6 +33,11 @@ html body app-root div.theme-green.ng-star-inserted app-reports.ng-star-inserted
 =================================================================================
 
 Kfintech
+MFSD201
+MFSD205
+MFSD211
+MFSD230
+MFSD262
 
 goto
 https://dss.kfintech.com/dssweb/
@@ -50,6 +60,11 @@ if there is snackbar,login try again max 10 times
 close popup banner if existing
 .css-19ekb6t > svg:nth-child(1)
 .css-19ekb6t
+
+
+click "Mail Back Reports"
+a.MuiListItem-root:nth-child(3)
+
 
 
 Click dropdown
