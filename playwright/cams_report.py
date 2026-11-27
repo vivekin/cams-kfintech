@@ -56,7 +56,8 @@ def try_login(page, email):
         print("Previous session still active, ending it")
         page.click(SESSION_CLICK_HERE)
 
-        page.wait_for_selector(EMAIL_INPUT, state="visible", timeout=30000)
+        page.wait_for_timeout(1000)
+        # page.wait_for_selector(EMAIL_INPUT, state="visible", timeout=3000)
         page.fill(EMAIL_INPUT, email)
         print(f"Filled email: {email}")
 
@@ -64,16 +65,220 @@ def try_login(page, email):
         print("Clicked submit")
 
 def download_WBR2_report(page, config, extpass):
-    pass
+    page.get_by_role("tab", name="Customer Services", exact=True).click()
+    page.locator("li", has_text="WBR2. Investor Transactions for a Period").click()
+
+    fmt = page.locator('mat-select[formcontrolname="outputformat"]')
+    fmt.click()
+    
+    panel = page.locator("div.mat-select-panel")
+    panel.wait_for(state="visible")
+    
+    panel.get_by_role("option", name="Excel With Headers", exact=True).click()
+    panel.wait_for(state="hidden", timeout=5000)
+    
+    delivery = page.locator('mat-select[formcontrolname="deliveryopt"]')
+    delivery.click()
+    
+    panel = page.locator("div.mat-select-panel")
+    panel.wait_for(state="visible")
+    
+    panel.get_by_role("option", name="Email a download link", exact=True).click()
+    panel.wait_for(state="hidden", timeout=5000)
+
+    # ---- From Date ----
+    from_date = page.get_by_placeholder("From Date", exact=True)
+    from_date.wait_for(state="visible")
+    from_date.evaluate("el => el.removeAttribute('readonly')")
+    from_date.fill(config["cams"]["start_date"])
+    
+    # ---- To Date ----
+    to_date = page.get_by_placeholder("To Date", exact=True)
+    to_date.wait_for(state="visible")
+    to_date.evaluate("el => el.removeAttribute('readonly')")
+    to_date.fill(config["cams"]["end_date"])
+    
+    # ---- Next ----
+    page.wait_for_timeout(4000)
+    page.get_by_role("button", name="Next", exact=True).click()
+    
+    # ---- Passwords (appear after Next) ----
+    pwd = page.locator("#password")
+    pwd.wait_for(state="visible", timeout=30000)
+    pwd.fill(extpass)
+    
+    page.locator("#confirmPassword").fill(extpass)
+    
+    # ---- IMMEDIATE ----
+    page.get_by_role("button", name="IMMEDIATE", exact=True).click()
+    page.wait_for_timeout(3000)
+
+    # ---- Read the confirmation message ----
+    msg = page.locator("p", has_text="submitted").first
+    msg.wait_for(state="visible", timeout=60000)
+    
+    text = " ".join(msg.inner_text().split())   # collapse newlines and extra spaces
+    logging.info(f"Mailback request submit response: {text}")
+    print("Result:", text)
+    return text
 
 def download_WBR9_report(page, config, extpass):
-    pass
+    page.get_by_role("tab", name="Proprietary data", exact=True).click()
+    page.locator("li", has_text="WBR9. Investor Static details feed - CRMS Format").click()
+
+    fmt = page.locator('mat-select[formcontrolname="outputformat"]')
+    fmt.click()
+    
+    panel = page.locator("div.mat-select-panel")
+    panel.wait_for(state="visible")
+    
+    panel.get_by_role("option", name="Excel With Headers", exact=True).click()
+    panel.wait_for(state="hidden", timeout=5000)
+    
+    delivery = page.locator('mat-select[formcontrolname="deliveryopt"]')
+    delivery.click()
+    
+    panel = page.locator("div.mat-select-panel")
+    panel.wait_for(state="visible")
+    
+    panel.get_by_role("option", name="Email a download link", exact=True).click()
+    panel.wait_for(state="hidden", timeout=5000)
+
+    from_date = page.get_by_placeholder("From Date", exact=True)
+    from_date.wait_for(state="visible")
+    from_date.evaluate("el => el.removeAttribute('readonly')")
+    from_date.fill("01-Jan-1995")
+
+    # ---- Next ----
+    page.wait_for_timeout(4000)
+    page.get_by_role("button", name="Next", exact=True).click()
+    
+    # ---- Passwords (appear after Next) ----
+    pwd = page.locator("#password")
+    pwd.wait_for(state="visible", timeout=30000)
+    pwd.fill(extpass)
+    
+    page.locator("#confirmPassword").fill(extpass)
+    
+    # ---- IMMEDIATE ----
+    page.get_by_role("button", name="IMMEDIATE", exact=True).click()
+    page.wait_for_timeout(3000)
+
+    # ---- Read the confirmation message ----
+    msg = page.locator("p", has_text="submitted").first
+    msg.wait_for(state="visible", timeout=60000)
+    
+    text = " ".join(msg.inner_text().split())   # collapse newlines and extra spaces
+    logging.info(f"Mailback request submit response: {text}")
+    print("Result:", text)
+    return text
 
 def download_WBR49_report(page, config, extpass):
-    pass
+    page.get_by_role("tab", name="Grow your Business", exact=True).click()
+    page.locator("li", has_text="WBR49. SIP/STP procured for the period").click()
+
+    fmt = page.locator('mat-select[formcontrolname="outputformat"]')
+    fmt.click()
+    
+    panel = page.locator("div.mat-select-panel")
+    panel.wait_for(state="visible")
+    
+    panel.get_by_role("option", name="Excel With Headers", exact=True).click()
+    panel.wait_for(state="hidden", timeout=5000)
+    
+    delivery = page.locator('mat-select[formcontrolname="deliveryopt"]')
+    delivery.click()
+    
+    panel = page.locator("div.mat-select-panel")
+    panel.wait_for(state="visible")
+    
+    panel.get_by_role("option", name="Email a download link", exact=True).click()
+    panel.wait_for(state="hidden", timeout=5000)
+
+        # ---- From Date ----
+    from_date = page.get_by_placeholder("From Date", exact=True)
+    from_date.wait_for(state="visible")
+    from_date.evaluate("el => el.removeAttribute('readonly')")
+    from_date.fill(config["cams"]["start_date"])
+    
+    # ---- To Date ----
+    to_date = page.get_by_placeholder("To Date", exact=True)
+    to_date.wait_for(state="visible")
+    to_date.evaluate("el => el.removeAttribute('readonly')")
+    to_date.fill(config["cams"]["end_date"])
+    
+    # ---- Next ----
+    page.wait_for_timeout(4000)
+    page.get_by_role("button", name="Next", exact=True).click()
+    
+    # ---- Passwords (appear after Next) ----
+    pwd = page.locator("#password")
+    pwd.wait_for(state="visible", timeout=30000)
+    pwd.fill(extpass)
+    
+    page.locator("#confirmPassword").fill(extpass)
+    
+    # ---- IMMEDIATE ----
+    page.get_by_role("button", name="IMMEDIATE", exact=True).click()
+    page.wait_for_timeout(3000)
+
+    # ---- Read the confirmation message ----
+    msg = page.locator("p", has_text="submitted").first
+    msg.wait_for(state="visible", timeout=60000)
+    
+    text = " ".join(msg.inner_text().split())   # collapse newlines and extra spaces
+    logging.info(f"Mailback request submit response: {text}")
+    print("Result:", text)
+    return text
 
 def download_WBR77_report(page, config, extpass):
-    pass
+    page.get_by_role("tab", name="Your earnings", exact=True).click()
+    page.locator("li", has_text="WBR77. Consolidated Brokerage Payout Details").click()
+
+    fmt = page.locator('mat-select[formcontrolname="outputformat"]')
+    fmt.click()
+    
+    panel = page.locator("div.mat-select-panel")
+    panel.wait_for(state="visible")
+    
+    panel.get_by_role("option", name="Excel With Headers", exact=True).click()
+    panel.wait_for(state="hidden", timeout=5000)
+    
+    delivery = page.locator('mat-select[formcontrolname="deliveryopt"]')
+    delivery.click()
+    
+    panel = page.locator("div.mat-select-panel")
+    panel.wait_for(state="visible")
+    
+    panel.get_by_role("option", name="Email a download link", exact=True).click()
+    panel.wait_for(state="hidden", timeout=5000)
+
+    ## TO DO
+        # config['cams']['month_yr']
+    
+    # ---- Next ----
+    page.wait_for_timeout(4000)
+    page.get_by_role("button", name="Next", exact=True).click()
+    
+    # ---- Passwords (appear after Next) ----
+    pwd = page.locator("#password")
+    pwd.wait_for(state="visible", timeout=30000)
+    pwd.fill(extpass)
+    
+    page.locator("#confirmPassword").fill(extpass)
+    
+    # ---- IMMEDIATE ----
+    page.get_by_role("button", name="IMMEDIATE", exact=True).click()
+    page.wait_for_timeout(3000)
+
+    # ---- Read the confirmation message ----
+    msg = page.locator("p", has_text="submitted").first
+    msg.wait_for(state="visible", timeout=60000)
+    
+    text = " ".join(msg.inner_text().split())   # collapse newlines and extra spaces
+    logging.info(f"Mailback request submit response: {text}")
+    print("Result:", text)
+    return text
 
 def main():
     print("Script running ...")
@@ -129,17 +334,43 @@ def main():
                 close_popup_if_present(page)
             
                 try_login(page, user[0])
-                            
+
+                fund = page.get_by_role("combobox", name="Mutual Fund", exact=True)
+                fund.click()
+                
+                panel = page.locator("div.mat-select-panel")
+                panel.wait_for(state="visible")
+                page.wait_for_timeout(1000)
+                
+                all_opt = panel.locator("div.mat-option", has_text="All Mutual Funds")
+                all_opt.wait_for(state="visible")
+                all_opt.click()
+                page.wait_for_timeout(1000)
+                page.keyboard.press("Escape")
+                panel.wait_for(state="hidden", timeout=5000)
+
                 page.wait_for_timeout(3000)
                 match record_type:
                     case "WBR2":
                         result=download_WBR2_report(page, config, user[1])
+                        cf=re.search("is .* and at", result)
+                        if cf:
+                            status[user[0]]=result[cf.span()[0]+3:cf.span()[1]-7]
                     case "WBR9":
                         result=download_WBR9_report(page, config, user[1])
+                        cf=re.search("is .* and at", result)
+                        if cf:
+                            status[user[0]]=result[cf.span()[0]+3:cf.span()[1]-7]
                     case "WBR49":
                         result=download_WBR49_report(page, config, user[1])
+                        cf=re.search("is .* and at", result)
+                        if cf:
+                            status[user[0]]=result[cf.span()[0]+3:cf.span()[1]-7]
                     case "WBR77":
                         result=download_WBR77_report(page, config, user[1])
+                        cf=re.search("is .* and at", result)
+                        if cf:
+                            status[user[0]]=result[cf.span()[0]+3:cf.span()[1]-7]
 
                 # Click logout
                 page.click(LOGOUT_ICON)
@@ -148,7 +379,6 @@ def main():
                 # Brief pause to see the result (remove when running headless)
                 page.wait_for_timeout(3000)
             
-                status[user[0]]="success"
                 logging.info(f"Processed user {user[0]}.\n")
                 
             except Exception as e:
@@ -166,7 +396,6 @@ def main():
         logging.info(f"{i}: {status[i]}")
     logging.info("#####################################")
     print("Script exiting ...")
-
 
 
 if __name__ == "__main__":

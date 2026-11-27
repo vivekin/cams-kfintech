@@ -289,11 +289,6 @@ def download_MFSD230_report(page, config, extpass):
     pw_inputs.nth(0).fill(extpass)
     pw_inputs.nth(1).fill(extpass)
 
-    pw_inputs = page.locator("form input[type='password']")
-    pw_inputs.first.wait_for(state="visible")
-    pw_inputs.nth(0).fill(extpass)
-    pw_inputs.nth(1).fill(extpass)
-
     # Submit
     page.wait_for_timeout(2000)
     page.get_by_role("button", name="Submit").click()
@@ -435,23 +430,28 @@ def main():
                     case "MFSD201":
                         result=download_MFSD201_report(page, config, user[2])
                         kf=re.search(r"reference number (\w+)", result)
-                        status[user[0]]=kf.group(1)
+                        if kf:
+                            status[user[0]]=kf.group(1)
                     case "MFSD205":
                         result=download_MFSD205_report(page, config, user[2])
                         kf=re.search(r"reference number (\w+)", result)
-                        status[user[0]]=kf.group(1)
+                        if kf:
+                            status[user[0]]=kf.group(1)
                     case "MFSD211":
                         result=download_MFSD211_report(page, config, user[2])
                         kf=re.search(r"reference number (\w+)", result)
-                        status[user[0]]=kf.group(1)
+                        if kf:
+                            status[user[0]]=kf.group(1)
                     case "MFSD230":
                         result=download_MFSD230_report(page, config, user[2])
                         kf=re.search(r"reference number (\w+)", result)
-                        status[user[0]]=kf.group(1)
+                        if kf:
+                            status[user[0]]=kf.group(1)
                     case "MFSD262":
                         result=download_MFSD262_report(page, config, user[2])
                         kf=re.search(r"reference number (\w+)", result)
-                        status[user[0]]=kf.group(1)
+                        if kf:
+                            status[user[0]]=kf.group(1)
                     
                 page.wait_for_timeout(2000)
                 logout(page)
@@ -476,7 +476,6 @@ def main():
         logging.info(f"{i}: {status[i]}")
     logging.info("#####################################")
     print("Script exiting ...")
-
 
 
 if __name__ == "__main__":
