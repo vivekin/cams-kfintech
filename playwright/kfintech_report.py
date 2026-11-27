@@ -18,7 +18,12 @@ from ocrapi import solve_captcha
 print(sys.argv)
 record_type = sys.argv[1]
 browser_type = sys.argv[2]
-
+if record_type not in ["MFSD201","MFSD205","MFSD211","MFSD230","MFSD262"]:
+    print(f"Invalid record type: {record_type}, must be one of ['MFSD201','MFSD205','MFSD211','MFSD230','MFSD262']")
+    sys.exit(1)
+if browser_type not in ["chrome", "firefox"]:
+    print(f"Invalid browser type: {browser_type}, must be one of ['chrome', 'firefox']")
+    sys.exit(1)
 
 MAX_ATTEMPTS=10
 URL = "https://dss.kfintech.com/dssweb/"

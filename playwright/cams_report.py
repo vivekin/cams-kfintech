@@ -12,6 +12,12 @@ from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeo
 print(sys.argv)
 record_type = sys.argv[1]
 browser_type = sys.argv[2]
+if record_type not in ["WBR2","WBR9","WBR49","WBR77"]:
+    print(f"Invalid record type: {record_type}, must be one of ['WBR2','WBR9','WBR49','WBR77']")
+    sys.exit(1)
+if browser_type not in ["chrome", "firefox"]:
+    print(f"Invalid browser type: {browser_type}, must be one of ['chrome', 'firefox']")
+    sys.exit(1)
 
 URL = "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback"
 
@@ -108,7 +114,7 @@ def main():
     
     user_count = len(userlist)
     with sync_playwright() as p:
-        browser = p.firefox.launch(headless=False)
+        browser = p.firefox.launch(headless=False) if browser_type=="firefox" else p.chromium.launch(headless=False)
         # Process each user
         for user in userlist:
             try:
