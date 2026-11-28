@@ -11,6 +11,9 @@ Verify Python [CMD]:
 Install packages  [CMD]
 
     pip install selenium python-dateutil requests Pillow transformers torch torchvision
+    pip install playwright
+    playwright install firefox
+    playwright install chromium
 
 
 Create folder "kfintech_python" in Documents
