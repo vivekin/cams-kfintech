@@ -29,9 +29,8 @@ MAX_ATTEMPTS=10
 URL = "https://dss.kfintech.com/dssweb/"
 
 
-CANVAS_SEL = ".css-k008qs > canvas:nth-child(1)"
 POPUP_CLOSE_SEL = ".css-19ekb6t"
-DROPDOWN_SEL = ".css-vqps55 > div:nth-child(2) > div:nth-child(4)"
+USER_MENU = 'div:has(> svg[data-testid="AccountCircleRoundedIcon"]):visible'
 LOGOUT_SEL = 'a.MuiButtonBase-root:has-text("Logout")'
 
 def close_popup_if_present(page):
@@ -45,7 +44,7 @@ def close_popup_if_present(page):
         print("No popup banner")
  
 def get_captcha_text(page) -> str:
-    canvas = page.locator(CANVAS_SEL)
+    canvas = page.locator("form canvas").first
     canvas.wait_for(state="visible")
 
     data_url = canvas.evaluate("el => el.toDataURL('image/png')")
@@ -64,6 +63,8 @@ def try_login(page, usern, password) -> bool:
         page.fill("#password", password)
 
         captcha_text = get_captcha_text(page)
+        if captcha_text== "" or captcha_text is None:
+            captcha_text='empty'
         print("Captcha:", captcha_text)
         page.fill("#captcha", captcha_text)
 
@@ -94,7 +95,8 @@ def download_MFSD201_report(page, config, extpass):
     page.get_by_text("MFSD201").click()   # "MFSD201 -Transaction Report"
 
     # Fund dropdown -> first entry
-    page.locator(".css-tti6gq").click()
+    combo = page.get_by_role("combobox", name="Select Fund", exact=True)
+    combo.click()
     menu = page.locator("#menu-")
     menu.wait_for(state="visible")
     page.wait_for_timeout(1000)
@@ -137,7 +139,7 @@ def download_MFSD201_report(page, config, extpass):
 
     # Read the result message
     msg = page.get_by_text("successfully registered").first
-    msg.wait_for(state="visible", timeout=30000)
+    msg.wait_for(state="visible", timeout=10000)
     text = msg.inner_text()
     logging.info(f"Mailback request submit response: {text}")
     print("Result:", text)
@@ -152,7 +154,7 @@ def download_MFSD205_report(page, config, extpass):
 
     for label_id in ("select-funds-label","select-schemes-label","select-brok-type-label","select-sub-brok-type-label"):
         combo = page.locator(f'[role="combobox"][aria-labelledby="{label_id}"]:not([aria-disabled="true"])')
-        combo.wait_for(state="visible", timeout=30000)
+        combo.wait_for(state="visible", timeout=10000)
         combo.click()
     
         menu = page.locator("#menu-")
@@ -191,7 +193,7 @@ def download_MFSD205_report(page, config, extpass):
     
     # Read the result message
     msg = page.get_by_text("successfully registered").first
-    msg.wait_for(state="visible", timeout=30000)
+    msg.wait_for(state="visible", timeout=10000)
     text = msg.inner_text()
     logging.info(f"Mailback request submit response: {text}")
     print("Result:", text)
@@ -205,7 +207,8 @@ def download_MFSD211_report(page, config, extpass):
     page.get_by_text("MFSD211").click()   # "MFSD211-Investor Master Information"
     
     # Fund dropdown -> first entry
-    page.locator(".css-tti6gq").click()
+    combo = page.get_by_role("combobox", name="Funds", exact=True)
+    combo.click()
     menu = page.locator("#menu-")
     menu.wait_for(state="visible")
     page.wait_for_timeout(1000)
@@ -242,7 +245,7 @@ def download_MFSD211_report(page, config, extpass):
     
     # Read the result message
     msg = page.get_by_text("successfully registered").first
-    msg.wait_for(state="visible", timeout=30000)
+    msg.wait_for(state="visible", timeout=10000)
     text = msg.inner_text()
     logging.info(f"Mailback request submit response: {text}")
     print("Result:", text)
@@ -256,7 +259,8 @@ def download_MFSD230_report(page, config, extpass):
     page.get_by_text("MFSD230").click()   # "MFSD230-SIP/STP Report"
 
     # Fund dropdown -> first entry
-    page.locator(".css-tti6gq").click()
+    combo = page.get_by_role("combobox", name="Funds", exact=True)
+    combo.click()
     menu = page.locator("#menu-")
     menu.wait_for(state="visible")
     page.wait_for_timeout(1000)
@@ -296,7 +300,7 @@ def download_MFSD230_report(page, config, extpass):
     
     # Read the result message
     msg = page.get_by_text("successfully registered").first
-    msg.wait_for(state="visible", timeout=30000)
+    msg.wait_for(state="visible", timeout=10000)
     text = msg.inner_text()
     logging.info(f"Mailback request submit response: {text}")
     print("Result:", text)
@@ -310,7 +314,8 @@ def download_MFSD262_report(page, config, extpass):
     page.get_by_text("MFSD262").click()   # "MFSD262-PAN Level KYC Report"
 
     # Fund dropdown -> first entry
-    page.locator(".css-tti6gq").click()
+    combo = page.get_by_role("combobox", name="Funds", exact=True)
+    combo.click()
     menu = page.locator("#menu-")
     menu.wait_for(state="visible")
     page.wait_for_timeout(1000)
@@ -345,14 +350,14 @@ def download_MFSD262_report(page, config, extpass):
 
     # Read the result message
     msg = page.get_by_text("successfully registered").first
-    msg.wait_for(state="visible", timeout=30000)
+    msg.wait_for(state="visible", timeout=10000)
     text = msg.inner_text()
     logging.info(f"Mailback request submit response: {text}")
     print("Result:", text)
     return text
 
 def logout(page):
-    page.click(DROPDOWN_SEL)
+    page.locator(USER_MENU).first.click()
     page.wait_for_selector(LOGOUT_SEL, state="visible")
     page.click(LOGOUT_SEL)
     print("Logged out")
@@ -375,7 +380,7 @@ def main():
     )
     
     start_time = time.perf_counter()
-    logging.info(f"START - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - v.12")
+    logging.info(f"START - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - v1.0")
     logging.info(f"Arguments - browser_type: {browser_type}, record_type: {record_type}")
     
     today = date.today()

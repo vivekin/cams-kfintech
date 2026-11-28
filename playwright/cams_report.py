@@ -309,7 +309,7 @@ def main():
     )
     
     start_time = time.perf_counter()
-    logging.info(f"START - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - v.12")
+    logging.info(f"START - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - v1.0")
     logging.info(f"Arguments - browser_type: {browser_type}, record_type: {record_type}")
     
     today = date.today()
