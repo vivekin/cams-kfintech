@@ -22,8 +22,6 @@ if browser_type not in ["chrome", "firefox"]:
 URL = "https://www.camsonline.com/Distributors/Service-Requests/Distributor-Mailback-Services/Request-Mailback"
 
 POPUP_CLOSE = "mat-dialog-container .close-icon"
-EMAIL_INPUT = "#mat-input-0"
-SUBMIT_BTN = "input.check-now-btn"
 SESSION_CLICK_HERE = "h4.clicksession a.clickhere"  # "session is still active... click here"
 LOGOUT_ICON = "mat-icon.logout"
 
@@ -40,16 +38,15 @@ def close_popup_if_present(page):
  
 def try_login(page, email):
     """Fill email and submit. Returns True if logged in, False if an old session blocked it."""
-    page.wait_for_selector(EMAIL_INPUT, state="visible", timeout=30000)
-    page.fill(EMAIL_INPUT, email)
+    page.get_by_placeholder("Email", exact=True).fill(email)
     print(f"Filled email: {email}")
  
-    page.click(SUBMIT_BTN)
+    page.get_by_role("button", name="Submit", exact=True).click()
     print("Clicked submit")
  
     # Wait for whichever appears first: the logout icon (success) or the "click here" session link
     page.locator(f"{LOGOUT_ICON}, {SESSION_CLICK_HERE}").first.wait_for(
-        state="visible", timeout=60000
+        state="visible", timeout=10000
     )
  
     if page.locator(SESSION_CLICK_HERE).is_visible():
@@ -58,10 +55,10 @@ def try_login(page, email):
 
         page.wait_for_timeout(1000)
         # page.wait_for_selector(EMAIL_INPUT, state="visible", timeout=3000)
-        page.fill(EMAIL_INPUT, email)
+        page.get_by_placeholder("Email", exact=True).fill(email)
         print(f"Filled email: {email}")
 
-        page.click(SUBMIT_BTN)
+        page.get_by_role("button", name="Submit", exact=True).click()
         print("Clicked submit")
 
 def download_WBR2_report(page, config, extpass):
@@ -99,12 +96,12 @@ def download_WBR2_report(page, config, extpass):
     to_date.fill(config["cams"]["end_date"])
     
     # ---- Next ----
-    page.wait_for_timeout(4000)
+    page.wait_for_timeout(2000)
     page.get_by_role("button", name="Next", exact=True).click()
     
     # ---- Passwords (appear after Next) ----
     pwd = page.locator("#password")
-    pwd.wait_for(state="visible", timeout=30000)
+    pwd.wait_for(state="visible", timeout=10000)
     pwd.fill(extpass)
     
     page.locator("#confirmPassword").fill(extpass)
@@ -115,7 +112,7 @@ def download_WBR2_report(page, config, extpass):
 
     # ---- Read the confirmation message ----
     msg = page.locator("p", has_text="submitted").first
-    msg.wait_for(state="visible", timeout=60000)
+    msg.wait_for(state="visible", timeout=10000)
     
     text = " ".join(msg.inner_text().split())   # collapse newlines and extra spaces
     logging.info(f"Mailback request submit response: {text}")
@@ -150,12 +147,12 @@ def download_WBR9_report(page, config, extpass):
     from_date.fill("01-Jan-1995")
 
     # ---- Next ----
-    page.wait_for_timeout(4000)
+    page.wait_for_timeout(2000)
     page.get_by_role("button", name="Next", exact=True).click()
     
     # ---- Passwords (appear after Next) ----
     pwd = page.locator("#password")
-    pwd.wait_for(state="visible", timeout=30000)
+    pwd.wait_for(state="visible", timeout=10000)
     pwd.fill(extpass)
     
     page.locator("#confirmPassword").fill(extpass)
@@ -166,7 +163,7 @@ def download_WBR9_report(page, config, extpass):
 
     # ---- Read the confirmation message ----
     msg = page.locator("p", has_text="submitted").first
-    msg.wait_for(state="visible", timeout=60000)
+    msg.wait_for(state="visible", timeout=10000)
     
     text = " ".join(msg.inner_text().split())   # collapse newlines and extra spaces
     logging.info(f"Mailback request submit response: {text}")
@@ -195,7 +192,7 @@ def download_WBR49_report(page, config, extpass):
     panel.get_by_role("option", name="Email a download link", exact=True).click()
     panel.wait_for(state="hidden", timeout=5000)
 
-        # ---- From Date ----
+    # ---- From Date ----
     from_date = page.get_by_placeholder("From Date", exact=True)
     from_date.wait_for(state="visible")
     from_date.evaluate("el => el.removeAttribute('readonly')")
@@ -208,12 +205,12 @@ def download_WBR49_report(page, config, extpass):
     to_date.fill(config["cams"]["end_date"])
     
     # ---- Next ----
-    page.wait_for_timeout(4000)
+    page.wait_for_timeout(2000)
     page.get_by_role("button", name="Next", exact=True).click()
     
     # ---- Passwords (appear after Next) ----
     pwd = page.locator("#password")
-    pwd.wait_for(state="visible", timeout=30000)
+    pwd.wait_for(state="visible", timeout=10000)
     pwd.fill(extpass)
     
     page.locator("#confirmPassword").fill(extpass)
@@ -224,7 +221,7 @@ def download_WBR49_report(page, config, extpass):
 
     # ---- Read the confirmation message ----
     msg = page.locator("p", has_text="submitted").first
-    msg.wait_for(state="visible", timeout=60000)
+    msg.wait_for(state="visible", timeout=10000)
     
     text = " ".join(msg.inner_text().split())   # collapse newlines and extra spaces
     logging.info(f"Mailback request submit response: {text}")
@@ -253,16 +250,30 @@ def download_WBR77_report(page, config, extpass):
     panel.get_by_role("option", name="Email a download link", exact=True).click()
     panel.wait_for(state="hidden", timeout=5000)
 
-    ## TO DO
-        # config['cams']['month_yr']
+    # ---- All checkbox ----
+    all_cb = page.locator("mat-checkbox", has_text="All")
+    all_cb.wait_for(state="visible")
+    
+    if all_cb.locator("input").get_attribute("aria-checked") != "true":
+        all_cb.locator("label.mat-checkbox-layout").click()
+        
+    # ---- Select Month ----
+    month = page.locator('mat-select[formcontrolname="monthon"]')
+    month.click()
+    
+    panel = page.locator("div.mat-select-panel")
+    panel.wait_for(state="visible")
+    
+    panel.get_by_role("option", name=config["cams"]["month_yr"], exact=True).click()
+    panel.wait_for(state="hidden", timeout=5000)
     
     # ---- Next ----
-    page.wait_for_timeout(4000)
+    page.wait_for_timeout(2000)
     page.get_by_role("button", name="Next", exact=True).click()
     
     # ---- Passwords (appear after Next) ----
     pwd = page.locator("#password")
-    pwd.wait_for(state="visible", timeout=30000)
+    pwd.wait_for(state="visible", timeout=10000)
     pwd.fill(extpass)
     
     page.locator("#confirmPassword").fill(extpass)
@@ -273,7 +284,7 @@ def download_WBR77_report(page, config, extpass):
 
     # ---- Read the confirmation message ----
     msg = page.locator("p", has_text="submitted").first
-    msg.wait_for(state="visible", timeout=60000)
+    msg.wait_for(state="visible", timeout=10000)
     
     text = " ".join(msg.inner_text().split())   # collapse newlines and extra spaces
     logging.info(f"Mailback request submit response: {text}")
